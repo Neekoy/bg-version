@@ -1,0 +1,521 @@
+.coolFont {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.colorBlue {
+  color: #13BAA8;
+}
+
+.colorWhite {
+  color: white;
+}
+
+.blueButton {
+  background-color: #13BAA8;
+  color: white;
+  border-color: #13BAA8;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+.registerPage {
+}
+
+.registerHeader {
+  position: relative;
+  width: 100%;
+}
+
+.registerHeaderLayer {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;  
+}
+
+.registerHeaderImage {
+  height: auto;
+  max-width: 100%;
+}
+
+.registerHeaderText {
+  position: absolute;
+  color: white;
+  top: 33%;
+  left: 10%;
+  font-size: 4em;
+  font-size: 4vw;
+}
+
+.registerSmallText {
+  font-size: 0.66em;
+  color: grey;
+  float: right;
+  padding-top: 10px;
+}
+
+.registerPageTips {
+  float: left;
+  width: 300px;
+  height: 100%;
+}
+
+.registerPageTip {
+  width: 270px;
+  height: 270px;
+  border: 1px solid #d6d6d6;
+  margin: 15px;
+  margin-top: 82px;
+  border-radius: 5px;
+}
+
+.registerGlyphUser {
+  font-size: 16px;
+}
+
+.registerPageTip > div:nth-child(1) {
+  height: 50px;
+  background-color: #eaeaea;
+  font-size: 1.3em;
+  padding-top: 12px;
+  padding-left: 15px;
+}
+
+.registerPageTip > div:nth-child(2) {
+  padding: 10px;
+  text-align: justify;
+  height: 65%;
+}
+
+.registerPageTip > div:nth-child(3) {
+  border-top: 1px solid #d6d6d6;
+  padding-top: 12px;
+  padding-left: 15px;
+  background-color: #f4fffb;
+  height: 44px;
+}
+
+
+.registerPageContent {
+  float: left;
+  width: 800px;
+  margin-bottom: 50px;
+}
+
+.registerInputCols {
+  float: left;
+  width: 390px;
+}
+
+.registerInputCols:nth-child(2) {
+  margin-left: 20px;
+}
+
+
+
+
+
+.loginPageContainer {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.loginButton {
+  margin-top: 15px;
+  margin-left: 30%;
+  float: left;
+}
+
+.forgotPassButton {
+  margin-top: 15px;
+  margin-left: 5px;
+  float: left;
+}
+
+
+
+
+.topContainer {
+  height: 50px;
+  background: black;
+  position: relative;
+}
+
+.topItems {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1em;
+}
+
+.topItem {
+  margin-right: 20px;
+  float: right;
+  color: white;
+}
+
+.topItem:first-child {
+  margin-right: 20%;
+}
+
+.topItemClose {
+  margin-right: 5px;
+}
+
+
+
+.topNav {
+  width: 100%;
+  height: 60px;
+  background: white;
+  position: relative;
+  font-size: 1.2em;
+}
+
+.navLogo {
+  margin-left: 20%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.navLinks {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+.navLink {
+  margin-right: 20px;
+  float: right;
+}
+
+.navLink:first-child {
+  margin-right: 20%;
+}
+
+.navLinkDropdown {
+    display: block;
+    position: absolute;
+    background-color: white;
+    height: 340px;
+    width: 400px;
+    border-radius: 5px;
+}
+
+.navDropBlank {
+  height: 18px;
+}
+
+.navLinkDropHeader {
+  color: #13BAA8;
+  padding-top: 15px;
+  padding-left: 30px;
+  font-size: 1.3em;
+}
+
+.navLinkDropHeader:nth-child(1) {
+  margin-top: 18px;
+}
+
+.navLinkDropSmall {
+  margin-left: 30px;
+  color: #8c8c8c;
+  margin-bottom: 5px;
+}
+
+
+.topBanner {
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.65),
+      rgba(0, 0, 0, 0.65)
+    ),
+    url(/images/banner.jpg);
+  background-size: cover;
+  height: 500px;
+  position: relative;
+  width: 100%;
+}
+
+.topBannerTexts {
+  margin-left: 14%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.topBannerHead {
+  font-size: 3.5em;
+  font-weight: bold;
+}
+
+.topBannerDesc {
+  font-size: 3em;
+  font-style: italic;
+}
+
+.topBannerSmall {
+  float: left;
+  font-size: 1.4em;
+}
+
+.glyphicon-ok {
+  font-size: 0.8em;
+  margin-right: 5px;
+}
+
+#greenOne {
+  float: left;
+  font-style: italic;
+  color: #21a500;
+}
+
+#middle {
+  float: left;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#green {
+  float: left;
+  font-style: italic;
+  color: #21a500;
+}
+
+.topBannerChecklist {
+  margin-top: 30px;
+  float: left;
+}
+
+.topBannerChecklist:nth-last-child(2) {
+  margin-left: 40px;
+}
+
+.topBannerChecklistItem {
+  margin-bottom: 15px;
+}
+
+.getStarted {
+  margin-top: 30px;
+  border-radius: 0;
+  background-color: #1e9600;
+  border-color: #1e9600;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: white;
+}
+
+
+
+
+.domainSearchContainer {
+  position: relative;
+  width: 100%;
+}
+
+.domainSearch {
+  border-top: 150px solid #1e9600;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  height: 0; width: 100%;
+}
+
+.domainSearchBar {
+  position: absolute;
+  top: 25%;
+  left: 30%;
+  transform: translateY(-30%);
+  width: 40%;
+}
+
+.domainSearchBox {
+  height: 55px;
+  font-size: 1.3em;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.domainSearchButton {
+  height: 55px;
+  width: 75px;
+}
+
+.domainSearchPrices {
+  position: absolute;
+  top: 65%;
+  left: 32%;
+  transform: translateY(-40%);
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 1.2em;
+}
+
+.domainSearchPrice {
+  margin-left: 30px;
+  float: left;
+}
+
+
+
+
+
+
+
+.mainPageHeader {
+  margin-top: 40px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 3em;
+}
+
+.greenLine {
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 3px;
+  width: 240px;
+  background-color: #1e9600;
+}
+
+.mainPageDesc {
+  position: relative;
+  margin-top: 40px;
+  margin-left: 20%;
+  width: 43%;
+}
+
+.mainPageStar {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 4em;
+  float: left;
+  margin-left: 20px;
+  color: #21a500;
+}
+
+.mainPageDescHead {
+  margin-left: 90px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.9em;
+}
+
+.mainPageDescBody {
+  margin-left: 90px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3em;
+}
+
+
+
+
+
+
+.mainPagePlans {
+  margin-top: 80px;
+  height: 600px;
+  width: 100%;
+    background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.35)
+    ), url('/images/coffeeimage.jpg');
+}
+
+.mainPagePlansHead {
+  padding-top: 30px;
+  text-align: center;
+  font-size: 3.2em;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+}
+
+.mainPagePlansBox {
+  width: 70%;
+  margin: 0 auto; 
+  margin-top: 30px;
+}
+
+.mainPagePlansBoxes {
+  margin-left: 50px;
+  text-align: center;
+  height: 350px;
+  width: 250px;
+  float: left;
+  
+}
+
+.mainPagePlansBoxes > div:nth-of-type(1) {
+  height: 25%;
+  background: rgba(0, 0, 0, 0.65);
+  font-size: 2em;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 22px;
+}
+
+.mainPagePlansBoxes > div:nth-of-type(2) {
+  height: 20%;
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 5px;
+  color: white;
+}
+
+.mainPagePlansBoxes > div:nth-of-type(3) {
+  height: 65%;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.mainPagePlansBoxes > div:nth-of-type(4) {
+  height: 15%;
+  font-size: 1.8em;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-weight: bold;
+  padding-top: 7px;
+}
+
+.mainPagePlansBoxes > div:hover:nth-of-type(4) {
+  background-color: #45e0db;
+}
+
+.packageGreen {
+  color: #21a500;
+}
+
+.plansPriceSmall {
+  font-size: 1.6em;
+}
+
+.plansPriceBig {
+  font-size: 3em;
+}
+
+.plansPrice1 {
+  background: #008D96;
+}
+
+.plansPrice2 {
+  background: #13BAA8;
+}
+
+.plansPrice3 {
+  background: #78BE20;
+}
+
+.plansPrice4 {
+  background: #1AC4E8;
+}
+

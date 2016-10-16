@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+	<title>Web Hosting Company</title>
+	<link rel="stylesheet" href="/css/bootstrap.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+</head>
+<body ng-controller="mainController as mainCtrl">
+
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+<!-- TOP TOP -->
+<div class="alwaysOnTop">
+<div class="topContainer">
+  <div class="topItems">
+    {{#if user}}
+    <div class="topItem"><a href="/users/logout">Logout</a></div>
+    <div class="topItem" ng-bind="mainCtrl.itemsInCart">&nbsp</div>
+    <div class="topItem topItemClose">View Cart</div>
+    <div class="topItem topItemClose"><span class="glyphicon glyphicon-shopping-cart colorWhite"></span></div>
+    <div class="topItem"><a href="/clientarea">Client Area</a></div>
+    {{else}}
+    <div class="topItem"><a href="/users/login">Login</a></div>
+    <div class="topItem"><a href="/users/register">Register</a></div>
+    {{/if}}
+  </div>
+</div>
+</div>
+
+<!-- NAVIGATION -->
+<div class="topNav">
+  <div class="navLogo">
+    LOGO
+  </div>
+  <div class="navLinks">
+    <div class="navLink">
+      BLOG
+    </div>
+    <div class="navLink">
+      SERVERS
+    </div>
+    <div class="navLink" ng-mouseenter="showHosting=true" ng-mouseleave="showHosting=false">
+      HOSTING
+      <div ng-show="showHosting" ng-mouseenter="showHosting=true" ng-mouseleave="showHosting=false" class="navLinkDropdown">
+        <div class="navDropBlank"></div>
+        <div class="navLinkDropHeader coolFont">Cloud Hosting
+        </div>
+        <div class="navLinkDropSmall coolFont">Fast, reliable and easy Cloud-based hosting
+        </div>
+        <div class="navLinkDropHeader coolFont">cPanel Hosting
+        </div>
+        <div class="navLinkDropSmall coolFont">The industry-standard hosting solution
+        </div>
+        <div class="navLinkDropHeader coolFont">Reseller Hosting
+        </div>
+        <div class="navLinkDropSmall coolFont">Resell our services to your own customers
+        </div>
+        <div class="navLinkDropHeader coolFont">Virtual Servers
+        </div>
+        <div class="navLinkDropSmall coolFont">Virtual dedicated servers for you only
+        </div>
+      </div>
+    </div>
+    <div class="navLink">
+      DOMAINS
+    </div>
+    <div class="navLink">
+      HOME
+    </div>
+  </div>  
+</div>
+{{{body}}}
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="/controllers/maincontroller.js"></script>
+
+</html>
