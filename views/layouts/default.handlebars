@@ -11,24 +11,29 @@
 
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 
+<div class="overlay" ng-click="mainCtrl.toggleCart()" ng-show="mainCtrl.showCart"></div>
+
 <!-- TOP TOP -->
 <div class="alwaysOnTop">
 <div class="topContainer">
   <div class="topItems">
     {{#if user}}
     <div class="topItem topItemRightmost"><a href="/users/logout">Logout</a></div>
+    {{else}}
+    <div class="topItem topItemRightmost"><a href="/users/login">Login</a></div>
+    {{/if}}
     <div class="topItemCartClick topItem" ng-click="mainCtrl.toggleCart()">
       <div class="topItem" ng-bind="mainCtrl.itemsInCartFormatted">&nbsp</div>
       <div class="topItem topItemClose">View Cart</div>
       <div class="topItem topItemClose">
         <span class="glyphicon glyphicon-shopping-cart colorWhite"></span>
       </div>
-    </div>
-    <div class="topItem"><a href="/clientarea">Client Area</a></div>
+    {{#if user}}
+    <div class="topItem "><a href="/clientarea">Client Area</a></div>
     {{else}}
-    <div class="topItem"><a href="/users/login">Login</a></div>
     <div class="topItem"><a href="/users/register">Register</a></div>
     {{/if}}
+    </div>
   </div>
 </div>
 </div>
@@ -70,13 +75,10 @@
     <div class="navLink">
       DOMAINS
     </div>
-    <div class="navLink">
-      HOME
-    </div>
   </div>  
 </div>
 <!-- SHOPPING CART -->
-<div ng-show="mainCtrl.showCart" class="cartPopUpOuter">
+<div ng-show="mainCtrl.showCart" class="cartPopUpOuter lightGreyFont">
   <div ng-show="mainCtrl.showCart" class="cartPopUpInner">
     <div class="cartTopText coolFont">Get access to your new services in 4 easy steps.</div>
     <div class="cartPopUpTop">
@@ -109,9 +111,9 @@
               <div class="itemsInCartLine"></div>
               <div class="itemsInCartWrap">
                 <div class="itemsInCartLeft">
-                  <div class="itemInCart coolFont" ng-bind="mainCtrl.getProductDesc(key.product)" ng-repeat="i in mainCtrl.getNumberInCart(value.quantity) track by $index"></div>
-                  <div class="itemInCartSize coolFont" ng-bind="mainCtrl.getProductSize(key.product, key.size)" ng-repeat="i in mainCtrl.getNumberInCart(value.quantity) track by $index"></div>
-                </div>
+                  <div class="itemInCart coolFont" ng-bind="mainCtrl.getProductDesc(key.product)"></div>
+                  <div class="itemInCartSize coolFont" ng-bind="mainCtrl.getProductSize(key.product, key.size)"></div>
+                </div><div class="itemInCartRemove cursorPointer" ng-click="mainCtrl.removeFromCart(key)"><span class="glyphicon glyphicon-remove-circle"></span></div>
                 <div class="itemsInCartPrices">
                   <div class="itemsInCartPrice" ng-bind="key.price"></div>
                   <div class="itemsInCartTime" ng-bind="key.timeframe"></div>
@@ -143,7 +145,9 @@
           </div>
         </div>
       </div>
-      <div class="btn btn-active" ng-click="mainCtrl.emptyCart()">Empty cart</div>
+      <div class="btn btn-active cartButtons" ng-click="mainCtrl.toggleCart()"">Continue shopping</div>
+      <div class="btn btn-active cartButtons" ng-click="mainCtrl.emptyCart()">Empty cart</div>
+      <a href="/checkout"><div class="btn btn-active cartButtonContinue">Checkout now</div></a>
     </div>
   </div>
 </div>

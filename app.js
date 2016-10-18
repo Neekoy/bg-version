@@ -122,14 +122,6 @@ io.sockets.on('connection', function(socket) {
 
     USERS_ONLINE[username] = socket.id;
 
-    if (!USERS_CARTS.hasOwnProperty(username)) {
-      console.log("This user isn't shopping yet.");
-    };
-
-    socket.on("addToCart", function(data) {
-      USERS_CARTS[username] = "lala";
-      console.log(USERS_CARTS);
-    });
 
     socket.on('disconnect', function() {
         delete USERS_ONLINE[socket.id];

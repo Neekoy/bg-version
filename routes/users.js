@@ -15,6 +15,11 @@ router.get('/login', function(req, res){
 	res.render('login');
 });
 
+// Checkout Login
+router.get('/checkout-login', function(req, res){
+	res.render('checkout-login', {layout: 'default'});
+});
+
 // Register User
 router.post('/register', function(req, res){
 	var name = req.body.name;
@@ -83,7 +88,7 @@ passport.deserializeUser(function(id, done) {
 });
 
 router.post('/login',
-  passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash: true}),
+  passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/checkout-login',failureFlash: true}),
   function(req, res) {
     res.redirect('/');
   });

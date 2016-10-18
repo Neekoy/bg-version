@@ -101,7 +101,8 @@ app.controller('mainController', function($scope, $http, $cookies) {
 				product: boughtStuff,
 				size: size,
 				timeframe: timeFrame,
-				price: price
+				price: price,
+				id: id
 			};
 
 			$cookies.putObject("productsInCart", this.products);
@@ -112,7 +113,8 @@ app.controller('mainController', function($scope, $http, $cookies) {
 				product: boughtStuff,
 				size: size,
 				timeframe: timeFrame,
-				price: price
+				price: price,
+				id: id
 			};
 			$cookies.putObject("productsInCart", this.products);
 		}
@@ -126,15 +128,6 @@ app.controller('mainController', function($scope, $http, $cookies) {
 	this.getProductDesc = function(prodName) {
 		if (prodName === "Cloud") {
 			return "Cloud Hosting";
-		}
-		if (prodName === "cloudStandard") {
-			return "Cloud Hosting";
-		}
-		if (prodName === "cloudPro") {
-			return "Cloud Hosting";
-		}
-		if (prodName === "cloudUltimate") {
-			return "Cloud Hosting";
 		} else {
 			return "Other service";
 		}
@@ -142,7 +135,7 @@ app.controller('mainController', function($scope, $http, $cookies) {
 
 	this.getProductSize = function(prodName, prodSize) {
 		if (prodName === "Cloud") {
-			return prodSize + " Hosting";
+			return prodSize + " Plan";
 		}
 		else {
 			return "One size";
@@ -159,7 +152,7 @@ app.controller('mainController', function($scope, $http, $cookies) {
 				subtotal = subtotal + products[item].price;
 			}
 			if (which === 'subtotal') {
-				return subtotal;
+				return subtotal.toFixed(2);
 			} else if (which === 'vat') {
 				result = subtotal/5;
 				return result.toFixed(2);
@@ -173,6 +166,22 @@ app.controller('mainController', function($scope, $http, $cookies) {
 
 	this.toggleCart = function() {
 		this.showCart = !this.showCart;
+	}
+
+	this.removeFromCart = function(key) {
+		products = $cookies.getObject("productsInCart");
+		for (product in products) {
+			if (product === key.id) {
+				delete products[product];
+				this.products = products;
+				$cookies.putObject("productsInCart", products);
+
+				this.itemsInCart = $cookies.get("itemsInCart");
+				this.itemsInCart = parseFloat(this.itemsInCart) - 1;
+				$cookies.put("itemsInCart", this.itemsInCart);
+				this.itemsInCartFormatted = "(" + this.itemsInCart + ")";
+			}
+		}
 	}
 
 	this.emptyCart = function() {

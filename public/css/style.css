@@ -10,6 +10,14 @@
   color: white;
 }
 
+.cursorPointer {
+  cursor: pointer;
+}
+
+.lightGreyFont {
+  color: #727272;
+}
+
 .blueButton {
   background-color: #13BAA8;
   color: white;
@@ -138,6 +146,32 @@ a {
   float: left;
 }
 
+.loginPageAddText {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+.loginPageNewTo {
+  width: 100%;
+  background-color: #13BAA8;
+  border-color: #13BAA8;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.4em;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+a.loginPageNewToA {
+  text-decoration: none;
+}
+
+.loginPageNewTo:hover {
+  color: white;
+  text-decoration: underline;
+}
 
 
 
@@ -244,6 +278,20 @@ a {
 
 
 
+.overlay {
+    position:fixed;
+
+    /* color with alpha channel */
+    background-color: rgba(0, 0, 0, 0.65); /* 0.7 = 70% opacity */
+
+    /* stretch to screen edges */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1009;
+}
+
 .cartPopUpOuter {
   position: absolute;
   top: 50%;
@@ -251,12 +299,12 @@ a {
   width: 100%;
   height: 1px;
   overflow: visible;
-  background: red; 
+  background: red;
 }
 
 .cartPopUpInner {
   width: 800px;
-  height: 500px;
+  height: 560px;
   margin-left: -400px;  /***  width / 2   ***/
   position: absolute;
   top: -250px;          /***  height / 2   ***/
@@ -265,24 +313,25 @@ a {
   z-index: 1010;
   border: 1px solid black;
   border-radius: 5px;
+  overflow-x: hidden;
 }
 
 .cartTopText {
   border-radius: 5px 5px 0 0;
   width: 100%;
-  height: 50px;
+  height: 60px;
   background: white;
   position: relative;
   float: left;
   font-size: 1.8em;
   padding-left: 120px;
-  padding-top: 5px;
+  padding-top: 12px;
 }
 
 .cartPopUpTop {
   height: 130px;
   width: 100%;
-  background-color: #13BAA8;
+  background-color: #1AC4E8;
   position: relative;
   float: left;
 }
@@ -306,7 +355,6 @@ a {
     height: 50px;
     padding: 8px;
     background: #fff;
-    border: 2px solid #666;
     color: #666;
     text-align: center;
     font-size: 1.5em;
@@ -351,7 +399,7 @@ a {
 }
 
 .itemsInCartTableContent {
-  min-height: 200px;
+  min-height: 265px;
 }
 
 .itemsInCartNoneMsg {
@@ -359,6 +407,7 @@ a {
   top: 50%;
   transform: translateY(-50%);
   margin-left: 22%;
+  font-size: 1.2em;
 }
 
 .itemsInCartLine {
@@ -396,6 +445,12 @@ a {
   font-size: 1.2em;
 }
 
+.itemInCartRemove {
+  float: left;
+  margin-top: 36px;
+  margin-left: 5px;
+}
+
 .itemsInCartTotal {
   height: 50px;
   width: 50px;
@@ -428,6 +483,23 @@ a {
   font-weight: bold;
 }
 
+.cartButtons {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  margin-top: 35px;
+  font-size: 18px;
+  color: #727272;
+}
+
+.cartButtonContinue {
+  float: right;
+  font-size: 18px;
+  background-color: #1AC4E8;
+  color: white;
+  margin-top: 25px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+}
 
 
 
