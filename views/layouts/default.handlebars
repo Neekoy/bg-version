@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="/css/bootstrap.css" />
 	<link rel="stylesheet" href="/css/style.css" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto">
 </head>
 <body ng-controller="mainController as mainCtrl">
 
@@ -15,10 +16,14 @@
 <div class="topContainer">
   <div class="topItems">
     {{#if user}}
-    <div class="topItem"><a href="/users/logout">Logout</a></div>
-    <div class="topItem" ng-bind="mainCtrl.itemsInCart">&nbsp</div>
-    <div class="topItem topItemClose">View Cart</div>
-    <div class="topItem topItemClose"><span class="glyphicon glyphicon-shopping-cart colorWhite"></span></div>
+    <div class="topItem topItemRightmost"><a href="/users/logout">Logout</a></div>
+    <div class="topItemCartClick topItem" ng-click="mainCtrl.toggleCart()">
+      <div class="topItem" ng-bind="mainCtrl.itemsInCartFormatted">&nbsp</div>
+      <div class="topItem topItemClose">View Cart</div>
+      <div class="topItem topItemClose">
+        <span class="glyphicon glyphicon-shopping-cart colorWhite"></span>
+      </div>
+    </div>
     <div class="topItem"><a href="/clientarea">Client Area</a></div>
     {{else}}
     <div class="topItem"><a href="/users/login">Login</a></div>
@@ -70,9 +75,13 @@
     </div>
   </div>  
 </div>
+<div ng-show="mainCtrl.showCart" ng-click="mainCtrl.toggleCart()" class="cartPopUpOuter">
+  <div ng-show="mainCtrl.showCart" class="cartPopUpInner"></div>
+</div>
 {{{body}}}
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.5.6/angular-cookies.min.js"></script>
 <script src="/controllers/maincontroller.js"></script>
 
 </html>

@@ -89,6 +89,7 @@ app.use(function (req, res, next) {
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
   res.locals.user = req.user || null;
+  res.locals.inCart = 11;
   if (res.locals.user) {
     for (var i in res.locals.user) {
       if (i === 'username') {
@@ -112,6 +113,7 @@ serv.listen(app.get('port'), function(){
 });
 
 USERS_ONLINE = {};
+USERS_CARTS = {};
 
 io.sockets.on('connection', function(socket) {
 
@@ -119,6 +121,15 @@ io.sockets.on('connection', function(socket) {
     sessionid = socket.request.sessionID;
 
     USERS_ONLINE[username] = socket.id;
+
+    if (!USERS_CARTS.hasOwnProperty(username)) {
+      console.log("This user isn't shopping yet.");
+    };
+
+    socket.on("addToCart", function(data) {
+      USERS_CARTS[username] = "lala";
+      console.log(USERS_CARTS);
+    });
 
     socket.on('disconnect', function() {
         delete USERS_ONLINE[socket.id];

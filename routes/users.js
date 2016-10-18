@@ -17,27 +17,17 @@ router.get('/login', function(req, res){
 
 // Register User
 router.post('/register', function(req, res){
-	var firstName = req.body.firstName;
-	var lastName = req.body.lastName;
-	var email = req.body.email;
+	var name = req.body.name;
+	var username = req.body.username;
 	var password = req.body.password;
 	var password2 = req.body.password2;
-	var company = req.body.companyName;
-	var country = req.body.country;
-	var city = req.body.city;
-	var address = req.body.address;
-	var phone = req.body.phone;
 
 	// Validation
-	req.checkBody('firstName', 'Name is required').notEmpty();
-	req.checkBody('lastName', 'Name is required').notEmpty();
-	req.checkBody('email', 'Email is required').notEmpty();
-	req.checkBody('email', 'Email is not valid').isEmail();
+	req.checkBody('name', 'Name is required').notEmpty();
+	req.checkBody('username', 'Email is not valid').isEmail();
+	req.checkBody('username', 'Email is required').notEmpty();
 	req.checkBody('password', 'Password is required').notEmpty();
 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-	req.checkBody('country', 'Country is required').notEmpty();
-	req.checkBody('city', 'City is required').notEmpty();
-	req.checkBody('address', 'Address is required').notEmpty();
 
 	var errors = req.validationErrors();
 
@@ -47,15 +37,9 @@ router.post('/register', function(req, res){
 		});
 	} else {
 		var newUser = new User({
-			firstName: firstName,
-			lastName: lastName,
-			email: email,
-			password: password,
-			company: company,
-			country: country,
-			city: city,
-			address: address,
-			phone: phone
+			name: name,
+			username: username,
+			password: password
 		});
 
 		User.createUser(newUser, function(err, user){
@@ -70,8 +54,8 @@ router.post('/register', function(req, res){
 });
 
 passport.use(new LocalStrategy(
-  function(email, password, done) {
-   User.getUserByUsername(email, function(err, user){
+  function(username, password, done) {
+   User.getUserByUsername(username, function(err, user){
    	if(err) throw err;
    	if(!user){
    		return done(null, false, {message: 'Unknown User'});
@@ -106,6 +90,8 @@ router.post('/login',
 
 router.get('/logout', function(req, res){
 	req.logout();
+	req.session.username = "";
+	req.session.id = "";
 
 	req.flash('success_msg', 'You are logged out');
 
