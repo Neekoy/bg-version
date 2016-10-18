@@ -338,10 +338,16 @@ a {
   padding-top: 200px;
 }
 
+.cartContentAndTotal {
+  float: left;
+  width: 100%;
+}
+
 .itemsInCartTable {
   width: 65%;
   margin-left: 20px;
   position: relative;
+  float: left;
 }
 
 .itemsInCartTableContent {
@@ -389,6 +395,40 @@ a {
   margin-left: 15px;
   font-size: 1.2em;
 }
+
+.itemsInCartTotal {
+  height: 50px;
+  width: 50px;
+  float: left;
+  margin-left: 15px;
+  width: 225px;
+}
+
+.itemsInCartTotalLine {
+  height: 1px;
+  background-color: #d8d8d8;
+}
+
+.itemsInCartTotalHeader {
+  font-size: 1.3em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  float: left;
+  margin-left: 10px;
+}
+
+.itemsInCartTotalPrice {
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+  font-size: 1.3em;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+
 
 
 

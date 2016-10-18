@@ -102,22 +102,45 @@
     </div>
 
     <div class="cartContentWrapper">
-      <div class="itemsInCartTable coolFont">
-        <div class="itemsInCartTableContent">
-          <div ng-show="mainCtrl.itemsInCart >= 1" class="itemsInCart" ng-repeat="(key, value) in mainCtrl.products">
-            <div class="itemsInCartLine"></div>
-            <div class="itemsInCartWrap">
-              <div class="itemsInCartLeft">
-                <div class="itemInCart coolFont" ng-bind="mainCtrl.getProductDesc(key)" ng-repeat="i in mainCtrl.getNumberInCart(value) track by $index"></div>
-                <div class="itemInCartSize coolFont" ng-bind="mainCtrl.getProductSize(key)" ng-repeat="i in mainCtrl.getNumberInCart(value) track by $index"></div>
-              </div>
-              <div class="itemsInCartPrices">
-                <div class="itemsInCartPrice">lala</div>
-                <div class="itemsInCartTime">/month</div>
+      <div class="cartContentAndTotal">
+        <div class="itemsInCartTable coolFont">
+          <div class="itemsInCartTableContent">
+            <div ng-show="mainCtrl.itemsInCart >= 1" class="itemsInCart" ng-repeat="key in mainCtrl.products">
+              <div class="itemsInCartLine"></div>
+              <div class="itemsInCartWrap">
+                <div class="itemsInCartLeft">
+                  <div class="itemInCart coolFont" ng-bind="mainCtrl.getProductDesc(key.product)" ng-repeat="i in mainCtrl.getNumberInCart(value.quantity) track by $index"></div>
+                  <div class="itemInCartSize coolFont" ng-bind="mainCtrl.getProductSize(key.product, key.size)" ng-repeat="i in mainCtrl.getNumberInCart(value.quantity) track by $index"></div>
+                </div>
+                <div class="itemsInCartPrices">
+                  <div class="itemsInCartPrice" ng-bind="key.price"></div>
+                  <div class="itemsInCartTime" ng-bind="key.timeframe"></div>
+                </div>
               </div>
             </div>
+            <div class="itemsInCartNoneMsg" ng-show="mainCtrl.itemsInCart == 0">You currently have no items in your cart.</div>
           </div>
-          <div class="itemsInCartNoneMsg" ng-show="mainCtrl.itemsInCart == 0">You currently have no items in your cart.</div>
+        </div>
+        <div class="itemsInCartTotal">
+          <div class="itemsInCartTotalLine"></div>
+          <div>
+            <div class="itemsInCartTotalHeader">Subtotal</div>
+            <div class="itemsInCartTotalPrice" ng-bind="mainCtrl.calculateTotal('subtotal')"></div>
+          </div>
+        </div>
+        <div class="itemsInCartTotal">
+          <div class="itemsInCartTotalLine"></div>
+          <div>
+            <div class="itemsInCartTotalHeader">VAT 20%</div>
+            <div class="itemsInCartTotalPrice" ng-bind="mainCtrl.calculateTotal('vat')"></div>
+          </div>
+        </div>
+        <div class="itemsInCartTotal">
+          <div class="itemsInCartTotalLine"></div>
+          <div>
+            <div class="itemsInCartTotalHeader bold">Total due</div>
+            <div class="itemsInCartTotalPrice bold" ng-bind="mainCtrl.calculateTotal('total')"></div>
+          </div>
         </div>
       </div>
       <div class="btn btn-active" ng-click="mainCtrl.emptyCart()">Empty cart</div>

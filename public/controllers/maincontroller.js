@@ -9,6 +9,16 @@ app.config(function($interpolateProvider) {
     $interpolateProvider.endSymbol(']]');
 });
 
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
+
 app.controller('mainController', function($scope, $http, $cookies) {
 
 	if (typeof $cookies.get("itemsInCart") === "undefined") {
@@ -36,29 +46,77 @@ app.controller('mainController', function($scope, $http, $cookies) {
 		return this.tab === tab;
 	};
 
-	this.addToCart = function(boughtStuff) {
+	this.addToCart = function(boughtStuff, size, timeFrame) {
 
 		this.itemsInCart = $cookies.get("itemsInCart");
 		this.itemsInCart = parseFloat(this.itemsInCart) + 1;
 		$cookies.put("itemsInCart", this.itemsInCart);
 		this.itemsInCartFormatted = "(" + this.itemsInCart + ")";
 
+		id = guid();
+
+		if (boughtStuff === "Cloud") {
+			type = "hosting";
+			if (size === "Basic") {
+				if (timeFrame === "monthly") {
+					price = 4.99;
+				}
+				else if (timeFrame === "yearly") {
+					price = 49.99;
+				}
+			}
+			if (size === "Standard") {
+				if (timeFrame === "monthly") {
+					price = 7.99;
+				}
+				else if (timeFrame === "yearly") {
+					price = 79.99;
+				}
+			}
+			if (size === "Pro") {
+				if (timeFrame === "monthly") {
+					price = 9.99;
+				}
+				else if (timeFrame === "yearly") {
+					price = 99.99;
+				}
+			}
+			if (size === "Ultimate") {
+				if (timeFrame === "monthly") {
+					price = 19.99;
+				}
+				else if (timeFrame === "yearly") {
+					price = 199.99;
+				}
+			}			
+		} else {
+			type = "undefined";
+		}
+
 		if (typeof $cookies.get("productsInCart") === "undefined") {
 			this.products = {};
-			this.products[boughtStuff] = 1;
+
+			this.products[id] = {
+				type: type,
+				product: boughtStuff,
+				size: size,
+				timeframe: timeFrame,
+				price: price
+			};
+
 			$cookies.putObject("productsInCart", this.products);
 		} else {
 			this.products = $cookies.getObject("productsInCart");
-			if (this.products.hasOwnProperty(boughtStuff)) {
-				this.products[boughtStuff] += 1;
-				$cookies.putObject("productsInCart", this.products);
-			} else {
-				this.products[boughtStuff] = 1;
-				$cookies.putObject("productsInCart", this.products);
-			}
+			this.products[id] = {
+				type: type,
+				product: boughtStuff,
+				size: size,
+				timeframe: timeFrame,
+				price: price
+			};
+			$cookies.putObject("productsInCart", this.products);
 		}
 		console.log(this.products);
-		
 	}
 
 	this.getNumberInCart = function(num) {
@@ -66,7 +124,7 @@ app.controller('mainController', function($scope, $http, $cookies) {
 	}
 
 	this.getProductDesc = function(prodName) {
-		if (prodName === "cloudBasic") {
+		if (prodName === "Cloud") {
 			return "Cloud Hosting";
 		}
 		if (prodName === "cloudStandard") {
@@ -82,20 +140,34 @@ app.controller('mainController', function($scope, $http, $cookies) {
 		}
 	}
 
-	this.getProductSize = function(prodName) {
-		if (prodName === "cloudBasic") {
-			return "Basic Plan";
+	this.getProductSize = function(prodName, prodSize) {
+		if (prodName === "Cloud") {
+			return prodSize + " Hosting";
 		}
-		if (prodName === "cloudStandard") {
-			return "Standard Plan";
-		}
-		if (prodName === "cloudPro") {
-			return "Pro Plan";
-		}
-		if (prodName === "cloudUltimate") {
-			return "Ultimate Plan";
-		} else {
+		else {
 			return "One size";
+		}
+	}
+
+	this.calculateTotal = function(which) {
+		if (typeof $cookies.get("productsInCart") === "undefined") {
+			return 0;
+		} else {
+			products = $cookies.getObject("productsInCart");
+			subtotal = 0;
+			for (item in products) {
+				subtotal = subtotal + products[item].price;
+			}
+			if (which === 'subtotal') {
+				return subtotal;
+			} else if (which === 'vat') {
+				result = subtotal/5;
+				return result.toFixed(2);
+			} else {
+				vat = subtotal / 5;
+				result = subtotal + vat;
+				return result.toFixed(2);
+			}
 		}
 	}
 
