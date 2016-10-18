@@ -16,6 +16,7 @@ app.controller('mainController', function($scope, $http, $cookies) {
 		this.itemsInCart = 0;
 	} else {
 		this.itemsInCart = $cookies.get("itemsInCart");
+		this.products = $cookies.getObject("productsInCart");
 	}
 	this.itemsInCartFormatted = "(" + this.itemsInCart + ")";
 
@@ -43,26 +44,69 @@ app.controller('mainController', function($scope, $http, $cookies) {
 		this.itemsInCartFormatted = "(" + this.itemsInCart + ")";
 
 		if (typeof $cookies.get("productsInCart") === "undefined") {
-			var products = {};
-			products[boughtStuff] = 1;
-			$cookies.putObject("productsInCart", products);
+			this.products = {};
+			this.products[boughtStuff] = 1;
+			$cookies.putObject("productsInCart", this.products);
 		} else {
-			products = $cookies.getObject("productsInCart");
-			if (products.hasOwnProperty(boughtStuff)) {
-				products[boughtStuff] += 1;
-				$cookies.putObject("productsInCart", products);
+			this.products = $cookies.getObject("productsInCart");
+			if (this.products.hasOwnProperty(boughtStuff)) {
+				this.products[boughtStuff] += 1;
+				$cookies.putObject("productsInCart", this.products);
 			} else {
-				products[boughtStuff] = 1;
-				$cookies.putObject("productsInCart", products);
+				this.products[boughtStuff] = 1;
+				$cookies.putObject("productsInCart", this.products);
 			}
 		}
-		check = $cookies.getObject("productsInCart");
-		console.log(check);
+		console.log(this.products);
 		
+	}
+
+	this.getNumberInCart = function(num) {
+    	return new Array(num);
+	}
+
+	this.getProductDesc = function(prodName) {
+		if (prodName === "cloudBasic") {
+			return "Cloud Hosting";
+		}
+		if (prodName === "cloudStandard") {
+			return "Cloud Hosting";
+		}
+		if (prodName === "cloudPro") {
+			return "Cloud Hosting";
+		}
+		if (prodName === "cloudUltimate") {
+			return "Cloud Hosting";
+		} else {
+			return "Other service";
+		}
+	}
+
+	this.getProductSize = function(prodName) {
+		if (prodName === "cloudBasic") {
+			return "Basic Plan";
+		}
+		if (prodName === "cloudStandard") {
+			return "Standard Plan";
+		}
+		if (prodName === "cloudPro") {
+			return "Pro Plan";
+		}
+		if (prodName === "cloudUltimate") {
+			return "Ultimate Plan";
+		} else {
+			return "One size";
+		}
 	}
 
 	this.toggleCart = function() {
 		this.showCart = !this.showCart;
 	}
 
+	this.emptyCart = function() {
+		$cookies.remove("productsInCart");
+		$cookies.put("itemsInCart", 0);
+		this.itemsInCart = 0;
+		this.itemsInCartFormatted = "(" + this.itemsInCart + ")";
+	}
 });

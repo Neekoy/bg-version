@@ -242,6 +242,8 @@ a {
 }
 
 
+
+
 .cartPopUpOuter {
   position: absolute;
   top: 50%;
@@ -253,19 +255,140 @@ a {
 }
 
 .cartPopUpInner {
-  width: 600px;
-  height: 400px;
-  margin-left: -300px;  /***  width / 2   ***/
+  width: 800px;
+  height: 500px;
+  margin-left: -400px;  /***  width / 2   ***/
   position: absolute;
-  top: -200px;          /***  height / 2   ***/
+  top: -250px;          /***  height / 2   ***/
   left: 50%;
   background: white;
   z-index: 1010;
-  border: 1px solid grey;
+  border: 1px solid black;
   border-radius: 5px;
 }
 
+.cartTopText {
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+  height: 50px;
+  background: white;
+  position: relative;
+  float: left;
+  font-size: 1.8em;
+  padding-left: 120px;
+  padding-top: 5px;
+}
 
+.cartPopUpTop {
+  height: 130px;
+  width: 100%;
+  background-color: #13BAA8;
+  position: relative;
+  float: left;
+}
+
+.cartStepWrapper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.cartSteps {
+  float: left;
+  margin-left: 12%;
+}
+
+
+.cartCircle {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+    background: #fff;
+    border: 2px solid #666;
+    color: #666;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.cartStepsDesc {
+  color: white;
+  font-size: 1.2em;
+  margin-top: 5px;
+}
+
+.cartStepsDesc1 {
+  margin-left: -30px;
+}
+
+.cartStepsDesc2 {
+  margin-left: -30px;
+}
+
+.cartStepsDesc3 {
+  margin-left: -40px;
+}
+
+.cartStepsDesc4 {
+  margin-left: -28px;
+}
+
+.cartContentWrapper {
+  padding-top: 200px;
+}
+
+.itemsInCartTable {
+  width: 65%;
+  margin-left: 20px;
+  position: relative;
+}
+
+.itemsInCartTableContent {
+  min-height: 200px;
+}
+
+.itemsInCartNoneMsg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 22%;
+}
+
+.itemsInCartLine {
+  height: 1px;
+  background-color: #d8d8d8;
+}
+
+.itemsInCartWrap {
+  height: 65px;
+}
+
+.itemsInCartLeft {
+  float: left;
+}
+
+.itemsInCartPrices {
+  margin-top: 10px;
+  margin-right: 15px;
+  float: right;
+}
+
+.itemsInCartPrice {
+  float: right;
+}
+
+.itemInCart {
+  margin-top: 10px;
+  margin-left: 15px;
+  font-size: 1.1em;
+}
+
+.itemInCartSize {
+  margin-bottom: 10px;
+  margin-left: 15px;
+  font-size: 1.2em;
+}
 
 
 

@@ -75,8 +75,54 @@
     </div>
   </div>  
 </div>
-<div ng-show="mainCtrl.showCart" ng-click="mainCtrl.toggleCart()" class="cartPopUpOuter">
-  <div ng-show="mainCtrl.showCart" class="cartPopUpInner"></div>
+<!-- SHOPPING CART -->
+<div ng-show="mainCtrl.showCart" class="cartPopUpOuter">
+  <div ng-show="mainCtrl.showCart" class="cartPopUpInner">
+    <div class="cartTopText coolFont">Get access to your new services in 4 easy steps.</div>
+    <div class="cartPopUpTop">
+
+      <div class="cartStepWrapper">
+        <div class="cartSteps">
+          <div class="cartCircle coolFont">1</div>
+          <div class="cartStepsDesc cartStepsDesc1 coolFont">Cart Contents</div>
+        </div>
+        <div class="cartSteps">
+          <div class="cartCircle coolFont">2</div>
+          <div class="cartStepsDesc cartStepsDesc2 coolFont">Account Details</div>
+        </div>
+        <div class="cartSteps">
+          <div class="cartCircle coolFont">3</div>
+          <div class="cartStepsDesc cartStepsDesc3 coolFont">Payment Method</div>
+        </div>
+        <div class="cartSteps">
+          <div class="cartCircle coolFont">4</div>
+          <div class="cartStepsDesc cartStepsDesc4 coolFont">Confirmation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cartContentWrapper">
+      <div class="itemsInCartTable coolFont">
+        <div class="itemsInCartTableContent">
+          <div ng-show="mainCtrl.itemsInCart >= 1" class="itemsInCart" ng-repeat="(key, value) in mainCtrl.products">
+            <div class="itemsInCartLine"></div>
+            <div class="itemsInCartWrap">
+              <div class="itemsInCartLeft">
+                <div class="itemInCart coolFont" ng-bind="mainCtrl.getProductDesc(key)" ng-repeat="i in mainCtrl.getNumberInCart(value) track by $index"></div>
+                <div class="itemInCartSize coolFont" ng-bind="mainCtrl.getProductSize(key)" ng-repeat="i in mainCtrl.getNumberInCart(value) track by $index"></div>
+              </div>
+              <div class="itemsInCartPrices">
+                <div class="itemsInCartPrice">lala</div>
+                <div class="itemsInCartTime">/month</div>
+              </div>
+            </div>
+          </div>
+          <div class="itemsInCartNoneMsg" ng-show="mainCtrl.itemsInCart == 0">You currently have no items in your cart.</div>
+        </div>
+      </div>
+      <div class="btn btn-active" ng-click="mainCtrl.emptyCart()">Empty cart</div>
+    </div>
+  </div>
 </div>
 {{{body}}}
 </body>
