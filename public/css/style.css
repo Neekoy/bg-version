@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'DancingScript';
+  font-style: normal;
+  font-weight: normal;
+  src: local('DancingScript'), url('/fonts/dancingscript.ttf') format('truetype');
+}
+
 .coolFont {
   font-family: 'Open Sans', sans-serif;
 }
@@ -239,6 +246,7 @@ a.loginPageNewToA {
 .navLink {
   margin-right: 20px;
   float: right;
+  cursor: pointer;
 }
 
 .navLink:first-child {
@@ -249,9 +257,14 @@ a.loginPageNewToA {
     display: block;
     position: absolute;
     background-color: white;
-    height: 340px;
+    height: auto;
     width: 400px;
     border-radius: 5px;
+    padding-bottom: 18px;
+}
+
+.navLinkDropdownDomains {
+  padding-bottom: 0px;
 }
 
 .navDropBlank {
@@ -259,8 +272,7 @@ a.loginPageNewToA {
 }
 
 .navLinkDropHeader {
-  color: #13BAA8;
-  padding-top: 15px;
+  color: #1AC4E8;
   padding-left: 30px;
   font-size: 1.3em;
 }
@@ -273,6 +285,47 @@ a.loginPageNewToA {
   margin-left: 30px;
   color: #8c8c8c;
   margin-bottom: 5px;
+}
+
+.navLinkDropA:hover {
+  text-decoration: none;
+  background-color: grey;
+}
+
+.navLinkDropRegisterDomain {
+  margin-top: 20px;
+  background-color: #1AC4E8;
+  height: 70px;
+  border-radius: 0 0 5px 5px;
+}
+
+.navLinkDropRegisterDomainSrc {
+  background-color: #1AC4E8;
+  color: white;
+  height: 70px;
+  border-color: #1AC4E8;
+  border-radius: 0 0 5px 5px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.navLinkDropRegisterDomainBtn {
+  width: 80px;
+  color: white;
+  font-size: 19px;
+  border-left: 1px solid white;
+}
+
+.navLinkDropRegisterDomainSrc::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: white;
+}
+.navLinkDropRegisterDomainSrc:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: white;
+  opacity:  1;
+}
+.navLinkDropRegisterDomainSrc::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: white;
+ opacity:  1;
 }
 
 
@@ -658,6 +711,15 @@ a.loginPageNewToA {
   background-color: #1e9600;
 }
 
+.blueLine {
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 3px;
+  width: 240px;
+  background-color: #1AC4E8;
+}
+
 .mainPageDesc {
   position: relative;
   margin-top: 40px;
@@ -788,3 +850,105 @@ a.loginPageNewToA {
   background: #1AC4E8;
 }
 
+
+
+
+
+
+.cloudHeaderLayer {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cloudHeaderText {
+  position: absolute;
+  color: white;
+  top: 14%;
+  left: 8%;
+  font-size: 4em;
+  font-size: 4vw; 
+}
+
+.cloudHeaderTextSmall {
+  position: absolute;
+  color: white;
+  top: 43%;
+  left: 8%;
+  font-size: 2em;
+  font-size: 2vw;
+  font-style: italic;
+}
+
+.cloudHeaderTextSmall2 {
+  position: absolute;
+  color: white;
+  top: 55%;
+  left: 19.7%;
+  font-size: 2em;
+  font-size: 2vw; 
+  font-style: italic;
+}
+
+.cloudHeaderTextButton {
+  position: absolute;
+  color: #727272;
+  top: 77%;
+  left: 8%;
+  font-size: 2em;
+  font-size: 1.3vw;
+  background-color: #d6f2ff;
+  border-color: white;
+}
+
+.cloudHeaderBlue {
+  color: #d6f2ff;
+}
+
+.cloudPageMain {
+  text-align: center;
+  font-size: 3.5em;
+  font-style: italic;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #d1d3d3;
+}
+
+.cloudDescCont {
+  margin-top: 50px;
+  width: 100%;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.cloudDescItem {
+  width: 300px;
+  float: left;
+  margin-right: 30px;
+}
+
+.cloudDescItemImg {
+  width: 200px;
+  display: block;
+  margin: auto;
+}
+
+.cloudDescItemImg2 {
+  width: 160px;
+  display: block;
+  margin: auto;
+}
+
+.cloudDescItemHead {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.cloudDescItemCont {
+  margin-top: 15px;
+  text-align: center;
+}

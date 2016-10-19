@@ -8,9 +8,8 @@ router.get('/', function(req, res){
 	res.render('homepage', { layout: 'default'});
 });
 
-router.post('/addtocart', function(req, res){
-	console.log(req);
-	res.locals.inCart = 100;
+router.get('/cloud-hosting', function(req, res){
+	res.render('cloud-hosting', { layout: 'default' });
 });
 
 module.exports = router;

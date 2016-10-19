@@ -41,39 +41,85 @@
 <!-- NAVIGATION -->
 <div class="topNav">
   <div class="navLogo">
-    LOGO
+    <a href="/">LOGO</a>
   </div>
   <div class="navLinks">
     <div class="navLink">
       BLOG
     </div>
-    <div class="navLink">
+    <div class="navLink" class="navLink" ng-mouseenter="showServers=true" ng-mouseleave="showServers=false">
       SERVERS
+      <div ng-show="showServers" ng-mouseenter="showServers=true" ng-mouseleave="showServers=false" class="navLinkDropdown">
+        <div class="navDropBlank"></div>
+        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Cloud Hosting
+        </div>
+        <div class="navLinkDropSmall coolFont cursorPointer">Fast, reliable and easy Cloud-based hosting
+        </div></a>
+        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">cPanel Hosting
+        </div>
+        <div class="navLinkDropSmall coolFont cursorPointer">The industry-standard hosting solution
+        </div></a>
+        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Reseller Hosting
+        </div>
+        <div class="navLinkDropSmall coolFont cursorPointer">Resell our services to your own customers
+        </div></a>
+        <div class="navLinkDropHeader coolFont cursorPointer">Virtual Servers
+        </div>
+        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropSmall coolFont cursorPointer">Virtual dedicated servers for you only
+        </div></a>
+      </div>   
     </div>
     <div class="navLink" ng-mouseenter="showHosting=true" ng-mouseleave="showHosting=false">
       HOSTING
       <div ng-show="showHosting" ng-mouseenter="showHosting=true" ng-mouseleave="showHosting=false" class="navLinkDropdown">
         <div class="navDropBlank"></div>
-        <div class="navLinkDropHeader coolFont">Cloud Hosting
+        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Cloud Hosting
         </div>
-        <div class="navLinkDropSmall coolFont">Fast, reliable and easy Cloud-based hosting
+        <div class="navLinkDropSmall coolFont cursorPointer">Fast, reliable and easy Cloud-based hosting
+        </div></a>
+        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Wordpress Hosting
         </div>
-        <div class="navLinkDropHeader coolFont">cPanel Hosting
+        <div class="navLinkDropSmall coolFont cursorPointer">Specialised Wordpress hosting
+        </div></a>
+        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">cPanel Hosting
         </div>
-        <div class="navLinkDropSmall coolFont">The industry-standard hosting solution
+        <div class="navLinkDropSmall coolFont cursorPointer">The industry-standard hosting solution
+        </div></a>
+        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Reseller Hosting
         </div>
-        <div class="navLinkDropHeader coolFont">Reseller Hosting
+        <div class="navLinkDropSmall coolFont cursorPointer">Resell our services to your own customers
+        </div></a>
+        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Virtual Servers
         </div>
-        <div class="navLinkDropSmall coolFont">Resell our services to your own customers
-        </div>
-        <div class="navLinkDropHeader coolFont">Virtual Servers
-        </div>
-        <div class="navLinkDropSmall coolFont">Virtual dedicated servers for you only
-        </div>
+        <div class="navLinkDropSmall coolFont cursorPointer">Virtual dedicated servers for you only
+        </div></a>
       </div>
     </div>
-    <div class="navLink">
+    <div class="navLink" ng-mouseenter="showDomains=true" ng-mouseleave="showDomains=false">
       DOMAINS
+      <div ng-show="showDomains" ng-mouseenter="showDomains=true" ng-mouseleave="showHosting=false" class="navLinkDropdown navLinkDropdownDomains">
+        <div class="navDropBlank"></div>
+        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Register a domain
+        </div>
+        <div class="navLinkDropSmall coolFont cursorPointer">Find your perfect domain
+        </div></a>
+        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Transfer a domain
+        </div>
+        <div class="navLinkDropSmall coolFont cursorPointer">Transfer your domain to us easily
+        </div></a>
+        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Whois privacy
+        </div>
+        <div class="navLinkDropSmall coolFont cursorPointer">Protect your personal infromation
+        </div></a>
+        <div class="navLinkDropRegisterDomain">
+          <div class="input-group navLinkDropRegisterDomainSrc">
+            <input type="text" class="form-control navLinkDropRegisterDomainSrc " placeholder="Search for a domain name">
+            <span class="input-group-btn">
+              <button class="btn btn-default navLinkDropRegisterDomainSrc navLinkDropRegisterDomainBtn" type="button">Go!</button>
+            </span>
+          </div>
+        </div>
+      </div>      
     </div>
   </div>  
 </div>
