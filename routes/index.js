@@ -12,4 +12,9 @@ router.get('/cloud-hosting', function(req, res){
 	res.render('cloud-hosting', { layout: 'default' });
 });
 
+router.get('/wordpress-hosting', function(req, res){
+	res.render('wordpress-hosting', { layout: 'default' });
+});
+
+
 module.exports = router;

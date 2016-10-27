@@ -45,16 +45,18 @@
   </div>
   <div class="navLinks">
     <div class="navLink">
-      BLOG
+      Blog
     </div>
-    <div class="navLink" class="navLink" ng-mouseenter="showServers=true" ng-mouseleave="showServers=false">
-      SERVERS
+    <div class="navLink" class="navLink" ng-mouseenter="showServers=true" ng-mouseleave="showServers=false" ng-class="{'navLinkHovered' : showServers==true }">
+      Servers
       <div ng-show="showServers" ng-mouseenter="showServers=true" ng-mouseleave="showServers=false" class="navLinkDropdown">
         <div class="navDropBlank"></div>
+        <div class="navLinkDropWrap">
         <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Cloud Hosting
         </div>
         <div class="navLinkDropSmall coolFont cursorPointer">Fast, reliable and easy Cloud-based hosting
         </div></a>
+        </div>
         <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">cPanel Hosting
         </div>
         <div class="navLinkDropSmall coolFont cursorPointer">The industry-standard hosting solution
@@ -69,8 +71,8 @@
         </div></a>
       </div>   
     </div>
-    <div class="navLink" ng-mouseenter="showHosting=true" ng-mouseleave="showHosting=false">
-      HOSTING
+    <div class="navLink" ng-mouseenter="showHosting=true" ng-mouseleave="showHosting=false" ng-class="{'navLinkHovered' : showHosting==true }">
+      Hosting
       <div ng-show="showHosting" ng-mouseenter="showHosting=true" ng-mouseleave="showHosting=false" class="navLinkDropdown">
         <div class="navDropBlank"></div>
         <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Cloud Hosting
@@ -95,8 +97,30 @@
         </div></a>
       </div>
     </div>
-    <div class="navLink" ng-mouseenter="showDomains=true" ng-mouseleave="showDomains=false">
-      DOMAINS
+    <div class="navLink" ng-mouseenter="showWordpress=true" ng-mouseleave="showWordpress=false" ng-class="{'navLinkHovered' : showWordpress==true }">
+      Wordpress Hosting
+      <div ng-show="showWordpress" ng-mouseenter="showWordpress=true" ng-mouseleave="showWordpress=false" class="navLinkDropdown">
+        <div class="navDropBlank"></div>
+        <a class="navLinkDropA" href="/wordpress-hosting">
+          <div class="navLinkDropWordpress"></div>
+        </a>
+        <div class="navLinkWordpressLine"></div>
+        <a class="navLinkDropA" href="/wordpress-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Wordpress Hosting
+        </div>
+        <div class="navLinkDropSmall coolFont cursorPointer">Specialised Wordpress hosting
+        </div></a>
+        <a class="navLinkDropA" href="/wordpress-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Complete Wordpress Maintenance
+        </div>
+        <div class="navLinkDropSmall coolFont cursorPointer">We can take care of your website
+        </div></a>
+        <a class="navLinkDropA" href="/wordpress-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Build a Wordpress Website
+        </div>
+        <div class="navLinkDropSmall coolFont cursorPointer">We can build the perfect website for you.
+        </div></a>
+      </div>
+    </div>
+    <div class="navLink" ng-class="{'navLinkHovered' : showDomains==true }" ng-mouseenter="showDomains=true" ng-mouseleave="showDomains=false">
+      Domains
       <div ng-show="showDomains" ng-mouseenter="showDomains=true" ng-mouseleave="showHosting=false" class="navLinkDropdown navLinkDropdownDomains">
         <div class="navDropBlank"></div>
         <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Register a domain

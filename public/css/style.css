@@ -10,7 +10,7 @@
 }
 
 .colorBlue {
-  color: #13BAA8;
+  color: #1e9600;
 }
 
 .colorWhite {
@@ -26,9 +26,9 @@
 }
 
 .blueButton {
-  background-color: #13BAA8;
+  background-color: #1e9600;
   color: white;
-  border-color: #13BAA8;
+  border-color: #1e9600;
 }
 
 a {
@@ -247,6 +247,12 @@ a.loginPageNewToA {
   margin-right: 20px;
   float: right;
   cursor: pointer;
+  font-size: 1.3em;
+  color: #727272;
+}
+
+.navLinkHovered {
+  color: #1e9600;
 }
 
 .navLink:first-child {
@@ -258,9 +264,10 @@ a.loginPageNewToA {
     position: absolute;
     background-color: white;
     height: auto;
-    width: 400px;
+    width: 380px;
     border-radius: 5px;
-    padding-bottom: 18px;
+    padding-bottom: 12px;
+    margin-left: -20px;
 }
 
 .navLinkDropdownDomains {
@@ -268,44 +275,52 @@ a.loginPageNewToA {
 }
 
 .navDropBlank {
-  height: 18px;
+  margin-top: 20px;
 }
 
 .navLinkDropHeader {
-  color: #1AC4E8;
-  padding-left: 30px;
-  font-size: 1.3em;
+  color: #1e9600;
+  padding-left: 20px;
+  font-size: 0.9em;
+}
+
+.navLinkDropHeader:hover {
+  background-color: #F5F5F5;
+}
+
+.navLinkDropHeader:hover + .navLinkDropSmall {
+  background-color: #F5F5F5;
 }
 
 .navLinkDropHeader:nth-child(1) {
-  margin-top: 18px;
+  padding-top: 9px;
 }
 
 .navLinkDropSmall {
-  margin-left: 30px;
+  padding-left: 20px;
   color: #8c8c8c;
-  margin-bottom: 5px;
+  padding-bottom: 13px;
+  font-size: 0.8em;
 }
 
 .navLinkDropA:hover {
   text-decoration: none;
-  background-color: grey;
+  background-color: black;
 }
 
 .navLinkDropRegisterDomain {
   margin-top: 20px;
-  background-color: #1AC4E8;
-  height: 70px;
+  background-color: #1e9600;
+  height: 60px;
   border-radius: 0 0 5px 5px;
 }
 
 .navLinkDropRegisterDomainSrc {
-  background-color: #1AC4E8;
+  background-color: #1e9600;
   color: white;
   height: 70px;
-  border-color: #1AC4E8;
+  border-color: #1e9600;
   border-radius: 0 0 5px 5px;
-  padding-left: 10px;
   font-size: 20px;
 }
 
@@ -327,6 +342,28 @@ a.loginPageNewToA {
   color: white;
  opacity:  1;
 }
+
+.navLinkDropWordpress {
+  background-image: url(/images/wordpress-logo.jpg);
+  padding-top: 5px;
+  background-size: 100%;
+  width: 85%;
+  height: 100px;
+  margin-left: 23px;
+}
+
+.navLinkWordpressLine {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 6px;
+  height: 2px;
+  width: 240px;
+  background-color: #1e9600;
+}
+
+
+
 
 
 
@@ -384,7 +421,7 @@ a.loginPageNewToA {
 .cartPopUpTop {
   height: 130px;
   width: 100%;
-  background-color: #1AC4E8;
+  background-color: #1e9600;
   position: relative;
   float: left;
 }
@@ -547,13 +584,17 @@ a.loginPageNewToA {
 .cartButtonContinue {
   float: right;
   font-size: 18px;
-  background-color: #1AC4E8;
+  background-color: #1e9600;
   color: white;
   margin-top: 25px;
   margin-right: 25px;
   margin-bottom: 25px;
 }
 
+.cartButtonContinue:hover {
+  color: white;
+  text-decoration: underline;
+}
 
 
 
@@ -856,7 +897,7 @@ a.loginPageNewToA {
 
 
 .cloudHeaderLayer {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
     left: 0;
@@ -895,17 +936,17 @@ a.loginPageNewToA {
 
 .cloudHeaderTextButton {
   position: absolute;
-  color: #727272;
+  color: white;
   top: 77%;
   left: 8%;
   font-size: 2em;
   font-size: 1.3vw;
-  background-color: #d6f2ff;
-  border-color: white;
+  background-color: #1e9600;
+  border-color: #1e9600;
 }
 
 .cloudHeaderBlue {
-  color: #d6f2ff;
+  color: #1e9600;
 }
 
 .cloudPageMain {
@@ -914,7 +955,8 @@ a.loginPageNewToA {
   font-style: italic;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: #d1d3d3;
+  background-color: #1e9600;
+  color: white;
 }
 
 .cloudDescCont {
@@ -951,4 +993,96 @@ a.loginPageNewToA {
 .cloudDescItemCont {
   margin-top: 15px;
   text-align: center;
+}
+
+.cloudAddImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 26.7vw;
+}
+
+.cloudAddImageAlpha {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cloudAddImage {
+  height: auto;
+  max-width: 100%;
+}
+
+
+
+
+
+.wordpressHeader {
+  position: relative;
+  width: 100%;
+}
+
+.wordpressHeaderImage {
+  height: auto;
+  width: 100%;
+}
+
+.wordpressHeaderLine1 {
+  position: absolute;
+  color: white;
+  top: 11%;
+  left: 15.5%;
+  height: 3px;
+  width: 240px;
+  background-color: #1e9600;
+}
+
+.wordpressHeaderText {
+  position: absolute;
+  color: white;
+  top: 13%;
+  left: 8%;
+  font-size: 4em;
+  font-size: 4vw; 
+}
+
+.wordpressHeaderText2 {
+  position: absolute;
+  color: white;
+  top: 26.5%;
+  left: 19.5%;
+  font-size: 4em;
+  font-size: 4vw;   
+}
+
+.wordpressHeaderLine {
+  position: absolute;
+  color: white;
+  top: 47%;
+  left: 15.5%;
+  height: 3px;
+  width: 240px;
+  background-color: #1e9600;
+}
+
+.wordpressHeaderTextSmall {
+  position: absolute;
+  color: white;
+  top: 52%;
+  left: 8%;
+  font-size: 2em;
+  font-size: 2vw;
+  font-style: italic;
+}
+
+.wordpressHeaderTextSmall2 {
+  position: absolute;
+  color: white;
+  top: 60%;
+  left: 8%;
+  font-size: 2em;
+  font-size: 2vw; 
+  font-style: italic;
 }
