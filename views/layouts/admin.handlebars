@@ -1,0 +1,45 @@
+<html ng-app="adminApp">
+
+<head>
+
+<link rel="stylesheet" href="/css/admin.css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,400italic,700&subset=latin,cyrillic" rel="stylesheet">
+
+
+</head>
+<body class="ng-cloak coolFont" ng-controller="adminController as adminCtrl">
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+<div class="enableChatButtonCont">
+	<div ng-click="adminCtrl.toggleChat('off')" ng-show="!(adminCtrl.chatEnabled)" ng-hide="adminCtrl.chatEnabled" class="enableChatButton toggleChat">Enable Chat</div>
+	<div ng-click="adminCtrl.toggleChat('on')"  ng-show="adminCtrl.chatEnabled" ng-hide="!(adminCtrl.chatEnabled)" class="disableChatButton toggleChat">Disable Chat</div>
+</div>
+
+<div class="usersChattingCont">
+	<div ng-repeat="(key, value) in adminCtrl.ACTIVE_CHATS" class="usersChatting" ng-click="adminCtrl.toggleUserChat(key)">[[ key ]]</div>
+</div>
+
+<div class="actualChat">
+	<div ng-repeat="(key, value) in adminCtrl.DISPLAYED_CHATS" class="actualChatCont">
+		<div class="actualChatContentAll" id="scroller">
+			<div class="messageBlankSpace"></div>
+			<div ng-repeat="message in adminCtrl.CHAT_CONTENT[key]" class="actualChatRow">
+				<div ng-show="message.user === 'user'" class="messageBlankSpace"></div>
+				<div ng-show="message.user === 'user'" class="userMessageContent messageContent">[[ message.message ]]</div>
+				<div ng-show="message.user === 'admin'" class="adminMessageContent messageContent">[[ message.message ]]</div>
+				<div ng-show="message.user === 'admin'" class="messageBlankSpace"></div>
+			</div>
+		<div id="bottom"></div>
+		</div>
+		<form name="chatBox" target="#here" method="post">
+			<input ng-model="adminCtrl.chatMessage[key]" value="[[ adminCtrl.chatMessage[key] ]] type="text" class="form-control sendMessage" id="usr"></input>
+	      	<input ng-click="adminCtrl.submitChat(key)" type="submit" style="position: absolute; left: -9999px"/>
+      	</form>
+	</div>
+</div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.5.6/angular-cookies.min.js"></script>
+<script src="/controllers/admincontroller.js"></script>
+</html>

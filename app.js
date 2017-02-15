@@ -105,7 +105,7 @@ app.use('/users', users);
 app.use('/', navigation);
 
 // Set Port
-app.set('port', (process.env.PORT || 4001));
+app.set('port', (process.env.PORT || 4004));
 
 // Start the Server
 serv.listen(app.get('port'), function(){
@@ -114,18 +114,57 @@ serv.listen(app.get('port'), function(){
 
 USERS_ONLINE = {};
 USERS_CARTS = {};
+USERS_CHATTING = {};
 
 io.sockets.on('connection', function(socket) {
 
     username = socket.request.session.username;
     sessionid = socket.request.sessionID;
 
+    console.log("SESSION ID    " + sessionid);
+
     USERS_ONLINE[username] = socket.id;
 
+    socket.on("adminJoinChat", function(data) {
+      socket.join(data);
+    });
+
+    socket.on("newChatMessage", function(messageClientContent) {
+      chatSession = socket.request.sessionID;
+      async.parallel([
+        function(callback) {
+          if ( !(USERS_CHATTING.hasOwnProperty(chatSession)) ) {
+            USERS_CHATTING[chatSession] = "active";
+            socket.join(chatSession);
+
+            if (typeof username === 'undefined') {
+              chatUsername = "Customer"
+            } else {
+              chatUsername = username;
+            }
+            sendData = {
+              username: chatUsername,
+              chatSession: chatSession,
+              content: messageClientContent,
+            }
+            io.sockets.emit('newChat', sendData);
+          } else {
+            console.log("MESSAGING HERE " + chatSession);
+            sendDataNew = {
+              username: chatUsername,
+              chatSession: chatSession,
+              content: messageClientContent,
+            }
+            io.to(chatSession).emit('messageToAdmin', sendDataNew);
+          }
+        callback();
+        }
+      ]);
+    })
 
     socket.on('disconnect', function() {
         delete USERS_ONLINE[socket.id];
+        delete chatId;
     });
 
 });
-

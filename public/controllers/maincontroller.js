@@ -19,7 +19,155 @@ function guid() {
     s4() + '-' + s4() + s4() + s4();
 }
 
-app.controller('mainController', function($scope, $http, $cookies) {
+app.controller('mainController', function($scope, $http, $cookies, $window) {
+
+	console.log($window.innerWidth);
+    blankSpacePercent = $window.innerWidth / 1920 * 100;
+    this.navLinkBlank = blankSpacePercent * 3.4 * blankSpacePercent / 100 * blankSpacePercent / 100 * blankSpacePercent / 100 * blankSpacePercent / 100;
+
+    this.leftSpace = blankSpacePercent * 0.13;
+
+    if ($window.innerWidth < 1730 ) {
+    	this.navMenuOffsetServers = -200;
+    }
+
+    if ($window.innerWidth < 1571 ) {
+    	this.navMenuOffsetHosting = -100;
+    }
+
+    if ($window.innerWidth < 1300) {
+    	this.aboutSmallScreen = true;
+    	this.aboutBigScreen = false;
+    	this.aboutFlex = 'inline-block';
+    	this.aboutTextSize = '100';
+    } else {
+    	this.aboutSmallScreen = false;
+    	this.aboutBigScreen = true;
+    	this.aboutFlex = 'flex';
+       	this.aboutTextSize = '55';
+    }
+
+    if ($window.innerWidth < 1050) {
+    	this.fullMenu = false;
+    	this.mobileMenu = true;
+    	this.wordpressFlex = 'inline-block';
+    	this.wordpressImgWidth = 100;
+    	this.wordpressTextAlign = 'center';
+    	this.wordpressTextMargin = '30px';
+    } else {
+    	this.fullMenu = true;
+    	this.mobileMenu = false;
+    	this.wordpressFlex = 'flex';
+    	this.wordpressImgWidth = 55;
+    	this.wordpressTextAlign = 'left';
+    	this.wordpressTextMargin = '10%';
+    }
+
+    if ($window.innerWidth < 897) {
+    	this.advantgeWidth = 100;
+    	this.advantageCenterLeft = "center";
+    	this.advantageCenterRight = "center";
+    	this.advantageImgBorder = 'none';
+    } else {
+    	this.advantgeWidth = 40;
+    	this.advantageCenterLeft = "left";
+    	this.advantageCenterRight = "right";
+       	this.advantageImgBorder = '1px dashed #c1c1c1';
+    }
+
+    if ($window.innerWidth < 692) {
+    	this.navLogoClass = 'navLogoImage';
+	    this.flowerCont = 40;
+	    this.flowerLeft = 0;
+	    this.cloudFlowerTextHeight = 45;
+	    this.cloudFlowerLine = false;
+	    this.cloudFlowerHeight = 400;
+    } else {
+    	this.navLogoClass = 'navLogoImageBig';
+	    this.flowerCont = 30;
+	    this.flowerLeft = 10;
+	    this.cloudFlowerTextHeight = 35;
+	    this.cloudFlowerLine = true;
+	    this.cloudFlowerHeight = 300;
+    }
+
+	angular.element($window).bind('resize', function () {
+        blankSpacePercent = $window.innerWidth / 1920 * 100;
+        blankSpace = blankSpacePercent * 3.4 * blankSpacePercent / 100 * blankSpacePercent / 100 * blankSpacePercent / 100 * blankSpacePercent / 100;
+        this.leftSpace = blankSpacePercent * 0.13;
+	    this.navLinkBlank = blankSpace - 15;
+
+	    if ($window.innerWidth < 1300) {
+	    	this.aboutSmallScreen = true;
+	    	this.aboutBigScreen = false;
+	    	this.aboutFlex = 'inline-block';
+	    	this.aboutTextSize = '100';
+	    } else {
+	    	this.aboutSmallScreen = false;
+	    	this.aboutBigScreen = true;
+	    	this.aboutFlex = 'flex';
+	       	this.aboutTextSize = '55';
+	    }
+
+	    if ($window.innerWidth < 1050) {
+	    	this.fullMenu = false;
+	    	this.mobileMenu = true;
+	    	this.wordpressFlex = 'inline-block';
+	    	this.wordpressImgWidth = 100;
+	    	this.wordpressTextAlign = 'center';
+	    	this.wordpressTextMargin = '30px';
+	    } else {
+	    	this.fullMenu = true;
+	    	this.mobileMenu = false;
+	    	this.wordpressFlex = 'flex';
+	    	this.wordpressImgWidth = 55;
+	    	this.wordpressTextAlign = 'left';
+	    	this.wordpressTextMargin = '10%';
+	    }
+
+	    if ($window.innerWidth < 1730 ) {
+	    	this.navMenuOffsetServers = -200;
+	    } else {
+	    	this.navMenuOffsetServers = 0;
+	    }
+
+	    if ($window.innerWidth < 1571 ) {
+	    	this.navMenuOffsetHosting = -100;
+	    } else {
+	    	this.navMenuOffsetHosting = 0;
+	    }
+
+	    if ($window.innerWidth < 897) {
+	    	this.advantgeWidth = 100;
+	    	this.advantageCenterLeft = "center";
+	    	this.advantageCenterRight = "center";
+	    	this.advantageImgBorder = 'none';
+	    } else {
+	    	this.advantgeWidth = 40;
+	    	this.advantageCenterLeft = "left";
+	    	this.advantageCenterRight = "right";
+	       	this.advantageImgBorder = "1px dashed #c1c1c1";
+	    }
+
+	    if ($window.innerWidth < 692) {
+	    	this.navLogoClass = 'navLogoImage';
+		    this.flowerCont = 40;
+		    this.flowerLeft = 0;
+		    this.cloudFlowerTextHeight = 45;
+		    this.cloudFlowerLine = false;
+		    this.cloudFlowerHeight = 400;
+	    } else {
+	    	this.navLogoClass = 'navLogoImageBig';
+		    this.flowerCont = 30;
+		    this.flowerLeft = 10;
+		    this.cloudFlowerTextHeight = 35;
+		    this.cloudFlowerLine = true;
+		    this.cloudFlowerHeight = 300;
+	    }
+
+
+	    $scope.$apply();
+	}.bind(this));
 
 	if (typeof $cookies.get("itemsInCart") === "undefined") {
 		$cookies.put("itemsInCart", 0);
@@ -189,5 +337,19 @@ app.controller('mainController', function($scope, $http, $cookies) {
 		$cookies.put("itemsInCart", 0);
 		this.itemsInCart = 0;
 		this.itemsInCartFormatted = "(" + this.itemsInCart + ")";
+	}
+
+	this.toggleChat = function(toDo) {
+		if (toDo === "on") {
+			this.fullChat = true;
+		} else {
+			this.fullChat = false;
+		}
+	}
+
+	this.submitChat = function(data) {
+		console.log(this.chatMessageClient);
+		socket.emit("newChatMessage", this.chatMessageClient);
+		this.chatMessageClient = "";
 	}
 });

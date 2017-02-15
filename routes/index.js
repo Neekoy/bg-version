@@ -12,6 +12,14 @@ router.get('/cloud-hosting', function(req, res){
 	res.render('cloud-hosting', { layout: 'default' });
 });
 
+router.get('/control', function(req, res){
+	res.render('admin', { layout: 'admin' });
+});
+
+router.get('/servers', function(req, res){
+	res.render('servers', { layout: 'default' });
+});
+
 router.get('/wordpress-hosting', function(req, res){
 	res.render('wordpress-hosting', { layout: 'default' });
 });
