@@ -19,7 +19,48 @@ function guid() {
     s4() + '-' + s4() + s4() + s4();
 }
 
-app.controller('mainController', function($scope, $http, $cookies, $window) {
+app.directive("scroll", function ($window) {
+    return function(scope, element, attrs) {
+        angular.element($window).bind("scroll", function() {
+             if (this.pageYOffset >= 100) {
+                 console.log('Scrolled below header.');
+             } else {
+                 console.log('Header is in view.');
+             }
+        });
+    };
+});
+
+app.controller('mainController', function($scope, $rootScope, $http, $cookies, $window, $timeout, $location, $anchorScroll) {
+
+	this.chatMessageClient = "";
+	this.chatHeaderContent = "ESR Host Chat";
+
+	this.boughtItemPopup = false;
+
+    socket.emit("getInitialChat");
+
+    socket.on("receiveInitialChat", function(data) {
+    	if (data === "chatOff") {
+    		this.chatOn = false;
+    		this.CHAT_CONTENT = [];
+    		$scope.$apply();
+    	} else if (data != "none")	{
+    		this.chatOn = true;
+    		this.CHAT_CONTENT = data;
+    		this.fullChat = true;
+    		$scope.$apply();
+    		$timeout(function() {
+    			$location.hash('chatbg');
+				$anchorScroll();	
+    		});
+    	} else {
+    		this.chatOn = true;
+    		this.CHAT_CONTENT = [];
+    		this.fullChat = false;
+    		$scope.$apply();
+    	}
+    }.bind(this));	
 
 	console.log($window.innerWidth);
     blankSpacePercent = $window.innerWidth / 1920 * 100;
@@ -47,20 +88,14 @@ app.controller('mainController', function($scope, $http, $cookies, $window) {
        	this.aboutTextSize = '55';
     }
 
-    if ($window.innerWidth < 1050) {
+    if ($window.innerWidth < 1200) {
     	this.fullMenu = false;
     	this.mobileMenu = true;
-    	this.wordpressFlex = 'inline-block';
-    	this.wordpressImgWidth = 100;
-    	this.wordpressTextAlign = 'center';
-    	this.wordpressTextMargin = '30px';
+
     } else {
     	this.fullMenu = true;
     	this.mobileMenu = false;
-    	this.wordpressFlex = 'flex';
-    	this.wordpressImgWidth = 55;
-    	this.wordpressTextAlign = 'left';
-    	this.wordpressTextMargin = '10%';
+
     }
 
     if ($window.innerWidth < 897) {
@@ -91,6 +126,7 @@ app.controller('mainController', function($scope, $http, $cookies, $window) {
 	    this.cloudFlowerHeight = 300;
     }
 
+
 	angular.element($window).bind('resize', function () {
         blankSpacePercent = $window.innerWidth / 1920 * 100;
         blankSpace = blankSpacePercent * 3.4 * blankSpacePercent / 100 * blankSpacePercent / 100 * blankSpacePercent / 100 * blankSpacePercent / 100;
@@ -109,20 +145,14 @@ app.controller('mainController', function($scope, $http, $cookies, $window) {
 	       	this.aboutTextSize = '55';
 	    }
 
-	    if ($window.innerWidth < 1050) {
+	    if ($window.innerWidth < 1200) {
 	    	this.fullMenu = false;
 	    	this.mobileMenu = true;
-	    	this.wordpressFlex = 'inline-block';
-	    	this.wordpressImgWidth = 100;
-	    	this.wordpressTextAlign = 'center';
-	    	this.wordpressTextMargin = '30px';
+
 	    } else {
 	    	this.fullMenu = true;
 	    	this.mobileMenu = false;
-	    	this.wordpressFlex = 'flex';
-	    	this.wordpressImgWidth = 55;
-	    	this.wordpressTextAlign = 'left';
-	    	this.wordpressTextMargin = '10%';
+
 	    }
 
 	    if ($window.innerWidth < 1730 ) {
@@ -194,7 +224,14 @@ app.controller('mainController', function($scope, $http, $cookies, $window) {
 		return this.tab === tab;
 	};
 
+
 	this.addToCart = function(boughtStuff, size, timeFrame) {
+
+		this.boughtItemPopup = true;
+		$timeout(function () {
+			this.boughtItemPopup = false;
+			this.boughtItemPopupItem = boughtStuff;
+		}.bind(this), 3000);
 
 		this.itemsInCart = $cookies.get("itemsInCart");
 		this.itemsInCart = parseFloat(this.itemsInCart) + 1;
@@ -347,9 +384,74 @@ app.controller('mainController', function($scope, $http, $cookies, $window) {
 		}
 	}
 
-	this.submitChat = function(data) {
-		console.log(this.chatMessageClient);
-		socket.emit("newChatMessage", this.chatMessageClient);
-		this.chatMessageClient = "";
+	this.submitChat = function() {
+		if (this.chatMessageClient != "") {
+			this.chatting = true;
+			socket.emit("newChatMessage", this.chatMessageClient);
+
+			timestamp = new Date().getTime();
+			toAddChatContent = {
+				timestamp: timestamp,
+				message: this.chatMessageClient,
+				user: 'user',
+			}
+			this.CHAT_CONTENT.push(toAddChatContent);
+
+			this.chatMessageClient = "";
+
+			$timeout(function(){
+				$location.hash('chatbg');
+				$anchorScroll();
+		    });
+		}
 	}
+
+	socket.on("toggleChatGlobally", function(status) {
+		if (status) {
+			this.chatOn = true;
+			$scope.$apply();
+		} else {
+			this.chatOn = false;
+			$scope.$apply();
+		}
+	}.bind(this));
+
+	socket.on("chatGreetingMessage", function(chatSession) {
+		timestamp = new Date().getTime();
+        welcomeMessageData = {
+          timestamp: timestamp,
+          username: 'system',
+          chatSession: chatSession,
+          message: 'Благодарим Ви че се свързахте с нас. Наш представител ще ви отговори всеки момент.',
+          user: 'system',
+        }
+		$timeout(function() {
+        	this.CHAT_CONTENT.push(welcomeMessageData);
+        	$location.hash('chatbg');
+			$anchorScroll();
+    	}.bind(this));
+	}.bind(this));
+
+	socket.on("messageFromAdmin", function(data) {
+		$timeout(function() {
+			this.CHAT_CONTENT.push(data);
+			$location.hash('chatbg');
+			$anchorScroll();
+		}.bind(this))
+	}.bind(this));
+
+	socket.on("chatClosedByAdmin",function(data) {
+		console.log("CLOSED");
+		timestamp = new Date().getTime();
+        closedMessageData = {
+          timestamp: timestamp,
+          username: 'system',
+          message: 'Чатът бе затворен от наш представител. Ако имате допълнителни въпроси, не се колебайте да ни пишете отново.',
+          user: 'system',
+        }
+        this.CHAT_CONTENT.push(closedMessageData);
+		$location.hash('chatbg');
+		$anchorScroll();
+		$scope.$apply();
+	}.bind(this));
 });

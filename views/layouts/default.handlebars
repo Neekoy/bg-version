@@ -5,151 +5,21 @@
 	<link rel="stylesheet" href="/css/bootstrap.css" />
 	<link rel="stylesheet" href="/css/style.css" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,400italic,700&subset=latin,cyrillic" rel="stylesheet"> 
+ <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,400italic,700&subset=latin,cyrillic" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 </head>
 <body class="ng-cloak" ng-controller="mainController as mainCtrl">
 
-<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+
+<script src="/js/parallax.min.js"></script>
+<script src="/js/headerMovement.js"></script>
 
 <div class="overlay" ng-click="mainCtrl.toggleCart()" ng-show="mainCtrl.showCart"></div>
 
-<!-- TOP TOP -->
-<div class="alwaysOnTop">
-<div class="topContainer">
-  <div class="topItems">
-    <div class="navLogo">
-    <div class="topItem" ng-style="{ width: mainCtrl.navLinkBlank + 'px', height: '1px' }"></div>
-    {{#if user}}
-    <div class="topItem topItemRightmost"><a href="/users/logout">Logout</a></div>
-    {{else}}
-    <div class="topItem topItemRightmost"><a href="/users/login">Login</a></div>
-    {{/if}}
-    <div class="topItemCartClick topItem" ng-click="mainCtrl.toggleCart()">
-      <div class="topItemCartNumber" ng-bind="mainCtrl.itemsInCartFormatted"></div>
-      <div class="topItem topItemClose">View Cart</div>
-      <div class="topItem topItemClose">
-        <span class="glyphicon glyphicon-shopping-cart colorWhite"></span>
-      </div>
-    {{#if user}}
-    <div class="topItem "><a href="/clientarea">Client Area</a></div>
-    {{else}}
-    <div class="topItem"><a href="/users/register">Register</a></div>
-    {{/if}}
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- NAVIGATION -->
-<div class="topNav" ng-show="mainCtrl.fullMenu" ng-hide="mainCtrl.mobileMenu">
-  <div class="navLogo" ng-style="{ 'margin-left': mainCtrl.leftSpace + '%' }">
-    <a href="/"><img ng-class="mainCtrl.navLogoClass" src="/images/logo.jpg"></a>
-  </div>
-
-  <div class="navLinks">
-    <div ng-style="{ width: mainCtrl.navLinkBlank + 'px', height: '1px' }" class="navLink navLinkBlank"></div>
-    <div class="navLink" class="navLink" ng-mouseenter="showServers=true" ng-mouseleave="showServers=false" ng-class="{'navLinkHovered' : showServers==true }">
-      Сървъри
-      <div ng-show="showServers" ng-mouseenter="showServers=true" ng-mouseleave="showServers=false" class="navLinkDropdown" ng-style="{ 'margin-left': mainCtrl.navMenuOffsetServers + 'px' }">
-        <div class="navDropBlank"></div>
-        <div class="navLinkDropWrap">
-        <a class="navLinkDropA" href="/servers"><div class="navLinkDropHeader coolFont cursorPointer">Виртуални Сървъри (VPS)
-        </div>
-        <div class="navLinkDropSmall coolFont cursorPointer">Виртуални сървъри само за вашия акаунт
-        </div></a>
-        </div>
-        <a class="navLinkDropA" href="/servers"><div class="navLinkDropHeader coolFont cursorPointer">Dedicated сървъри (DS)
-        </div>
-        <div class="navLinkDropSmall coolFont cursorPointer">Ултимативното решение в хостинга
-        </div></a>
-      </div>   
-    </div>
-    <div class="navLink" ng-mouseenter="showHosting=true" ng-mouseleave="showHosting=false" ng-class="{'navLinkHovered' : showHosting==true }">
-      Хостинг
-      <div ng-show="showHosting" ng-mouseenter="showHosting=true" ng-mouseleave="showHosting=false" class="navLinkDropdown" ng-style="{ 'margin-left': mainCtrl.navMenuOffsetHosting + 'px' }">
-        <div class="navDropBlank"></div>
-        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Хостинг Пакети
-        </div>
-        <div class="navLinkDropSmall coolFont cursorPointer">Бърз, надежден и лесен за ползване
-        </div></a>
-        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Wordpress Hosting
-        </div>
-        <div class="navLinkDropSmall coolFont cursorPointer">Специализиран Wordpress хостинг
-        </div></a>
-        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Виртуални Сървъри
-        </div>
-        <div class="navLinkDropSmall coolFont cursorPointer">Виртуални сървъри само за вашия сайт
-        </div></a>
-      </div>
-    </div>
-    <div class="navLink" ng-mouseenter="showWordpress=true" ng-mouseleave="showWordpress=false" ng-class="{'navLinkHovered' : showWordpress==true }">
-      Wordpress
-      <div ng-show="showWordpress" ng-mouseenter="showWordpress=true" ng-mouseleave="showWordpress=false" class="navLinkDropdown">
-        <div class="navDropBlank"></div>
-        <a class="navLinkDropA" href="/wordpress-hosting">
-          <div class="navLinkDropWordpress"></div>
-        </a>
-        <div class="navLinkWordpressLine"></div>
-        <a class="navLinkDropA" href="/wordpress-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Wordpress Хостинг
-        </div>
-        <div class="navLinkDropSmall coolFont cursorPointer">Специализиран Wordpress хостинг
-        </div></a>
-        <a class="navLinkDropA" href="/wordpress-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Пълна Wordpress Поддръжка
-        </div>
-        <div class="navLinkDropSmall coolFont cursorPointer">Нека се погрижим за сайта ви
-        </div></a>
-        <a class="navLinkDropA" href="/wordpress-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Разработване на Wordpress
-        </div>
-        <div class="navLinkDropSmall coolFont cursorPointer">Можем да построим идеалния сайт.
-        </div></a>
-      </div>
-    </div>
-    <div class="navLink" ng-class="{'navLinkHovered' : showDomains==true }" ng-mouseenter="showDomains=true" ng-mouseleave="showDomains=false">
-      Домейни
-      <div ng-show="showDomains" ng-mouseenter="showDomains=true" ng-mouseleave="showHosting=false" class="navLinkDropdown navLinkDropdownDomains">
-        <div class="navDropBlank"></div>
-        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Регистрирай домейн
-        </div>
-        <div class="navLinkDropSmall coolFont cursorPointer">Намери идеалния домейн
-        </div></a>
-        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Трансфер на домейни
-        </div>
-        <div class="navLinkDropSmall coolFont cursorPointer">Трансфер на домейни с лекота
-        </div></a>
-        <a class="navLinkDropA" href="/cloud-hosting"><div class="navLinkDropHeader coolFont cursorPointer">Whois privacy
-        </div>
-        <div class="navLinkDropSmall coolFont cursorPointer">Предпази личната си информация
-        </div></a>
-        <div class="navLinkDropRegisterDomain">
-          <div class="input-group navLinkDropRegisterDomainSrc">
-            <input type="text" class="form-control navLinkDropRegisterDomainSrc " placeholder="Търсене на домейн">
-            <span class="input-group-btn">
-              <button class="btn btn-default navLinkDropRegisterDomainSrc navLinkDropRegisterDomainBtn" type="button">Go!</button>
-            </span>
-          </div>
-        </div>
-      </div>      
-    </div>
-    <div class="navLink navLinkPromo">ПРОМОЦИИ</div>
-  </div> 
-</div>
-
-<!-- MOBILE MENU -->
-
-<div class="topNav" ng-hide="mainCtrl.fullMenu" ng-show="mainCtrl.mobileMenu">
-  <div class="navLogo" ng-style="{ 'margin-left': mainCtrl.leftSpace + '%' }">
-    <a href="/"><img ng-class="mainCtrl.navLogoClass" src="/images/logo.jpg"></a>
-  </div>
-  <div class="navLinks">
-    <div class="navLink">
-      <span class="navLinkBurger glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-    </div>
-    <div class="navLink">
-      <div class="navLinkMobile coolFont">МЕНЮ</div>
-    </div>
-  </div>
-</div>
 
 <!-- SHOPPING CART -->
 <div ng-show="mainCtrl.showCart" class="cartPopUpOuter lightGreyFont">
@@ -227,7 +97,17 @@
 </div>
 {{{body}}}
 
-<div class="footerContactUs">Имате въпроси? Нека ви помогнем.</div>
+<div class="footerContactUs">
+  <div>Имате въпроси? Нека ви помогнем.</div>
+  <div class="footerChatButton" ng-hide="!(mainCtrl.chatOn)">
+    <div class="fa fa-comment chatboxIconSmall"></div>
+    <div class="footerChatButtonTxt"> Чат с нас</div>
+  </div>
+  <div class="footerChatButton" ng-hide="mainCtrl.chatOn" ng-show="!(mainCtrl.chatOn)">
+    <div class="fa fa-envelope chatboxIconSmall"></div>
+    <div class="footerChatButtonTxt"> Пишете ни</div>
+  </div>
+</div>
 
 <div class="footerContainer">
   <div class="footerContent">
@@ -258,19 +138,39 @@
   </div>
 </div>
 
-<div class="chatbox coolFont" ng-click="mainCtrl.toggleChat('on')" ng-show="!(mainCtrl.fullChat)" ng-hide="mainCtrl.fullChat">
-  <div class="chatboxContent">
-    <div class="fa fa-comments chatboxIcon"></div>Чат с наш представител
-  </div>
-</div>
+<div class="chatboxxx" ng-show="" ng-hide="!(mainCtrl.chatOn)">
 
-<div class="chatboxActive coolFont" ng-show="mainCtrl.fullChat" ng-hide="!(mainCtrl.fullChat)">
-  <div class="chatBoxHistory"></div>
-  <div class="chatboxInput">
-    <form name="chatBox" target="#here" method="post">
-      <input ng-model="mainCtrl.chatMessageClient" value="{{ mainCtrl.chatMessageClient }} placeholder="Вашето съобщение..." type="text" class="form-control" rows="2" id="usr"></input>
-      <input ng-click="mainCtrl.submitChat()" type="submit" style="position: absolute; left: -9999px"/>
-    </form>
+  <div class="chatbox coolFont" ng-click="mainCtrl.toggleChat('on')" ng-show="!(mainCtrl.fullChat)" ng-hide="mainCtrl.fullChat">
+    <div class="chatboxContent">
+      <div class="fa fa-comments chatboxIcon"></div>Чат с наш представител
+    </div>
+  </div>
+
+
+  <div class="chatboxActive coolFont" ng-show="mainCtrl.fullChat" ng-hide="!(mainCtrl.fullChat)">
+    <div class="chatboxActiveHeader">
+      <div>[[ mainCtrl.chatHeaderContent ]]</div>
+      <span class="glyphicon glyphicon-remove stopChat" aria-hidden="true" ng-click="mainCtrl.toggleChat('off')"></span>
+    </div>
+    <div class="messageBlankSpace"></div>
+    <div class="actualChatContentAll" id="scroller">
+      <div class="messageBlankSpace"></div>
+      <div ng-repeat="message in mainCtrl.CHAT_CONTENT" class="actualChatRow">
+        <div ng-show="message.user === 'admin'" class="messageBlankSpace"></div>
+        <div ng-show="message.user === 'admin'" class="userMessageContent messageContent">[[ message.message ]]</div>
+        <div ng-show="message.user === 'user'" class="adminMessageContent messageContent">[[ message.message ]]</div>
+        <div ng-show="message.user === 'user'" class="messageBlankSpace"></div>
+        <div ng-show="message.user === 'system'" class="messageBlankSpace"></div>
+        <div ng-show="message.user === 'system'" class="systemMessageContent messageContent"><b>Система: </b>[[ message.message ]]</div>
+      </div>
+      <div id="chatbg"></div>
+    </div>
+    <div class="chatboxInput">
+      <form name="chatBox" target="#here" method="post">
+        <input ng-model="mainCtrl.chatMessageClient" placeholder="Вашето съобщение..." type="text" class="form-control chatInputField" rows="2" id="usr" autocomplete="off" ng-click="mainCtrl.removeChatGreeting()"></input>
+        <input ng-click="mainCtrl.submitChat()" type="submit" style="position: absolute; left: -9999px"/>
+      </form>
+    </div>
   </div>
 </div>
 

@@ -5,6 +5,11 @@
   src: local('DancingScript'), url('/fonts/dancingscript.ttf') format('truetype');
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .italic {
   font-style: italic;
 }
@@ -19,6 +24,17 @@
 
 .coolFont {
   font-family: 'Roboto', sans-serif;
+}
+
+.mainPageHeaderFontParallax {
+  padding-top: 50px;
+  font-family: 'Lora', serif;
+  text-align: center;
+  font-size: 3.5em;
+  color: #727272;
+  mix-blend-mode: lighten;
+  background: #fff;
+  color: #3a3a3a;
 }
 
 .colorBlue {
@@ -43,9 +59,63 @@
   border-color: #1e9600;
 }
 
+.whiteBack {
+  background: white;
+}
+
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.whiteFont {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: white;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("/images/people_on_desk.jpg");
+
+    /* Set a specific height */
+    height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax-main-page {
+  clear: both;
+  height: auto;
+}
+
+.parallax-cloud-page {
+ background-position: 0 0 0 0 !important;
+ background-size: 100% !important;
+}
+
+.blackOnTopOfParallax {
+  background: rgba(0,0,0,0.2);
+}
+
+.contentParallax {
+}
+
+.blackOnTopOfParallaxWP {
+  background: rgba(0,0,0,0.4);
+  height: 537px;
+}
+
+.greenLineParallax {
+  margin-left: auto;
+  margin-right: auto;
+  height: 3px;
+  width: 50px;
+  background-color: #1E9600;
 }
 
 
@@ -196,8 +266,8 @@ a.loginPageNewToA {
 
 
 .topContainer {
+  background-color: rgba(61,153,147,0.5);
   height: 50px;
-  background: #212121;
   position: relative;
 }
 
@@ -220,6 +290,10 @@ a.loginPageNewToA {
   margin-right: 5px;
 }
 
+.topItemCart {
+  padding: 0 0 0 5px;
+}
+
 .topItemCartClick {
   position: relative;
   z-index: 1001;
@@ -235,12 +309,20 @@ a.loginPageNewToA {
 
 
 
+.navLinkCartMobileMenu {
+
+}
+
 .topNav {
+  z-index: 1111;
+  position: static;
+  top: 50px;
   width: 100%;
-  height: 60px;
-  background: white;
-  position: relative;
   font-size: 1.2em;
+  background-color: rgba(30, 150, 0, 0.9);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .navLogo {
@@ -248,12 +330,10 @@ a.loginPageNewToA {
 }
 
 .navLogoImageBig {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  display: flex;
   z-index: 1000;
-  border: 5px solid white;
   text-decoration: none;
+  height: 100px;
 }
 
 .navLogoImage {
@@ -266,33 +346,39 @@ a.loginPageNewToA {
 }
 
 .navLinkBurger {
-  margin-top: 10px;
+  margin: 10px 13px 0 0;
   font-size: 1.5em;
 }
 
 .navLinkMobile {
-  margin-top: 3px;
-  font-size: 1.5em;
+  width: 100%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .navLinks {
   width: 100%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  display: flex;
   z-index: 999;
+  align-items: center;
 }
 
 .navLink {
-  margin-right: 20px;
+  padding: 0 10px 0 10px;
   float: right;
   cursor: pointer;
-  font-size: 1.3em;
-  color: #1E9600;
+  font-size: 1.4em;
+  color: white;
+  display: flex;
+  align-items: center;
+  height: 100px;
 }
 
 .navLinkHovered {
-  color: #727272;
+  background-color: rgba(30, 150, 0, 1);;
+  color: white;
+  text-decoration: underline;
 }
 
 .navLinkBlank {
@@ -300,7 +386,8 @@ a.loginPageNewToA {
 }
 
 .navLinkPromo {
-  color: #FF00C9;
+  margin-left: auto;
+  color: #ed6f2c;
 }
 
 .navLinkDropdown {
@@ -309,9 +396,71 @@ a.loginPageNewToA {
     background-color: white;
     height: auto;
     width: 380px;
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
     padding-bottom: 12px;
     margin-left: -20px;
+    margin-top: 33px;
+}
+
+.navLinkDropdownServers {
+    right: 5px !important;
+}
+
+.navLinkCartPopup {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: white;
+    height: auto;
+    width: 380px;
+    border-radius: 5px;
+    padding-bottom: 12px;
+    margin-top: 70px;
+    right: 9px;
+    border: 1px solid #1E9600;
+    color: #1E9600;
+    padding: 5px 10px 5px 10px;
+    font-size: 1em;
+}
+
+.navLinkCartContentCont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    background-color: white;
+    height: auto;
+    width: 380px;
+    border-radius: 5px;
+    padding-bottom: 12px;
+    right: -70px;
+    top: 100px;
+    border: 1px solid #1E9600;
+    color: #1E9600;
+    padding: 5px 10px 5px 10px;
+    font-size: 1.2em;
+}
+
+
+
+.navLinkCartContentContThanks {
+  top: 120px !important;
+  right: -36px !important;
+}
+
+.navLinkCartThanks {
+  font-size: 1.2em;
+}
+
+.popupHeart {
+  margin: 0 15px 0 10px;
+  font-size: 1.5em !important;
+}
+
+.navLinkCartPopupHeart {
+  margin: 0 10px 0 5px;
 }
 
 .navLinkDropdownDomains {
@@ -406,9 +555,162 @@ a.loginPageNewToA {
   background-color: #1e9600;
 }
 
+.mainPageTopNav {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 500px;
+}
+
+.mainPageTopNav > div:nth-child(1) {
+  margin-left: 10%;
+}
+
+.mainPageTopNav > div:nth-child(2) {
+  margin-left: 12%;
+}
+
+.mainPageTopNav > div:nth-child(3) {
+  margin-left: 15%;
+}
+
+.mainPageTopNavTextHead {
+  font-family: 'Lora', serif;
+  font-size: 3.5em;
+  color: white;
+}
+
+.mainPageTopNavGreen {
+  height: 3px;
+  width: 240px;
+  background-color: #1e9600;  
+}
+
+.mainPageTopNavText2 {
+  font-family: 'Lora', serif;
+  font-size: 3.5em;
+  color: white;
+  font-style: italic;
+}
+
+.navLinkDivider {
+  height: 55px;
+  width: 1px;
+  background-color: white;
+  margin: 0 35px 0 25px;
+}
+
+.navLinkCartCounter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 0.5em;
+  top: 25%;
+  left: 45%;
+  background: red;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: #EE7B3E;
+}
+
+.navLinkIcons {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-right: 40px;
+  color: white;
+  cursor: pointer;
+  height: 100px;
+  font-size: 2.6em;
+}
+
+.navLinkCartContentCont {
+  font-size: 0.4em;
+}
 
 
 
+.mainPageTop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 60px;
+}
+
+.mainPageTopHeader {
+  font-weight: bold;
+  text-align: center;
+  width: 600px;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: black;
+  font-size: 3em;
+}
+
+.mainPageTopHeaderSmall {
+  text-align: center;
+  width: 600px;
+  font-size: 3em;
+  background-color: rgba(30, 150, 0, 0.85);
+  color: white;
+}
+
+.mainPageTopDetailsCont {
+  display: flex;
+  justify-content: center;
+}
+
+.mainPageTopDetails {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  max-width: 1600px;
+}
+
+.mainPageTopDetail {
+  margin: 0 10px 20px 10px;
+  padding: 10px 14px 10px 14px;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #1E9600;
+  font-weight: bold;
+  width: 450px;
+  display: flex;
+  align-items: center;
+}
+
+.mainPageTopDetailSymbol {
+  margin: 5px 13px 0 3px;
+}
+
+.faCheck {
+  font-size: 1.2em !important;
+  color: #1E9600;
+}
+
+.mainPageTopDetailsButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.mainPageTopDetailsBuy {
+  background-color: rgba(30, 150, 0, 0.95);
+  padding: 10px 15px 10px 15px;
+  color: white;
+  font-size: 1.4em;
+  border: 1px solid white;
+}
+
+.mainPageTopDetailsDetails {
+  color: white;
+}
 
 
 
@@ -844,6 +1146,26 @@ a.loginPageNewToA {
 
 
 
+.footerChatButton {
+  color: #1E9600;
+  background-color: white;
+  border-radius: 5px 5px 5px 5px;
+  padding: 7px 18px 7px 16px;
+  cursor: pointer;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footerChatButton:hover {
+
+}
+
+.footerChatButtonTxt {
+  font-size: 0.9em;
+}
+
 .footerContactUs {
   height: 100px;
   width: 100%;
@@ -851,7 +1173,10 @@ a.loginPageNewToA {
   text-align: center;
   font-size: 2em;
   color: white;
-  padding-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -897,9 +1222,10 @@ a.loginPageNewToA {
 
 
 .mainPageHighlightCont {
+  background-color: white;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -908,6 +1234,7 @@ a.loginPageNewToA {
   text-align: center;
   margin-top: 60px;
   text-align: center;
+  margin: 0 20px 0 20px;
 }
 
 .mainPageHighImg {
@@ -925,7 +1252,6 @@ a.loginPageNewToA {
   margin-top: 20px;
   font-size: 1.3em;
   font-style: italic;
-  color: #727272;
 }
 
 .mainPageHighButton {
@@ -949,23 +1275,23 @@ a.loginPageNewToA {
   margin-top: 80px;
   height: auto;
   width: 100%;
-  background: 
-    linear-gradient(
-      rgba(0, 0, 0, 0.25),
-      rgba(0, 0, 0, 0.25)
-    ), url('/images/grass.jpg');
+  background-color: rgba(0, 0, 0, 0.2);
   background-size: cover;
+  display: flex;
+  flex-direction: column;
 }
 
 .mainPagePlansHead {
   padding-top: 20px;
-  text-align: center;
   font-size: 3.2em;
   font-family: 'Open Sans', sans-serif;
   color: white;
+  display: flex;
+  justify-content: center;
 }
 
 .mainPagePlansBox {
+  z-index: 2000;
   padding-top: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -1149,7 +1475,7 @@ a.loginPageNewToA {
 }
 
 .mainPageAboutContHead {
-  margin-top: 50px;
+  padding-top: 50px;
   text-align: center;
   font-size: 3em;
   color: #727272;
@@ -1369,13 +1695,50 @@ a.loginPageNewToA {
 
 
 
+
+.wordpressHeaderNew {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 70px;
+  padding-top: 70px;
+}
+
+.wordpressHeaderCont {
+  display: flex;
+  flex-direction: column;
+}
+
+.wordpressHeaderBig {
+  font-size: 4em;
+  color: white;
+
+}
+
+.wordpressHeaderLineNew {
+  height: 3px;
+  width: 240px;
+  background-color: #1e9600;  
+}
+
+.wordpressHeaderTextSmallNu {
+  font-size: 2em;
+  font-style: italic;
+  color: white;
+}
+
+
+
+
+
 .wordpressHeader {
   position: relative;
   width: 100%;
 }
 
 .wordpressHeaderImage {
-  height: 400px;
+  height: 500px;
   width: 100%;
   object-fit: cover;
 }
@@ -1590,7 +1953,7 @@ a.loginPageNewToA {
   position: fixed;
   right: 0;
   bottom: 0;
-  height: 50px;
+  height: 40px;
   width: 300px;
   vertical-align: baseline;
   text-align: center;
@@ -1611,7 +1974,7 @@ a.loginPageNewToA {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 12px;
+  margin-top: 8px;
 }
 
 .chatboxIcon {
@@ -1619,19 +1982,100 @@ a.loginPageNewToA {
   margin-right: 9px;
 }
 
+.chatboxIconSmall {
+  font-size: 1em !important;
+  margin-right: 9px;
+}
+
+
 .chatboxActive {
   position: fixed;
   right: 0;
   bottom: 0;
   height: 350px;
-  width: 300px;
-  border: 3px solid #1E9600;  
-  border-radius: 20px 0 0 0;
-  background-color: #eaeaea;
+  width: 320px;
+  border-left: 2px solid #1E9600;
+  border-top: 2px solid #1E9600;
+  border-radius: 10px 0 0 0;
+  background-color: #efefef;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }
 
-.chatBoxHistory {
+.chatboxActiveHeader {
+  height: 40px;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1E9600;
+  font-size: 1.2em;
+  color: white;
+  border-bottom: 1px solid #efefef;
+  padding-left: 105px;
+  padding-right: 5%;
+}
+
+.stopChat {
+  display: flex;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.actualChatContentAll {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.actualChatRow {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.messageContent {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding: 7px;
+  border-radius: 5px 5px 5px 5px;
+  font-size: 1.1em;
+}
+
+.userMessageContent {
+  color: white;
+  background-color: #1E9600;
+}
+
+.adminMessageContent {
+  color: #1E9600;
+  background-color: white;
+}
+
+.systemMessageContent {
+  color: #1E9600;
+  background-color: white;
+}
+
+.messageBlankSpace {
   flex-grow: 1;
+  min-width: 90px;
+  border: 1px solid #efefef;
+}
+
+.sendMessage {
+  width: 100%;
+}
+
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 3px 0 rgba(30, 150, 0, 1);
+}
+
+#chatbg {
+  border: 1px solid #efefef;
+  height: 1px;
+  width: 100%;
 }

@@ -115,52 +115,115 @@ serv.listen(app.get('port'), function(){
 USERS_ONLINE = {};
 USERS_CARTS = {};
 USERS_CHATTING = {};
+CHAT_LOGS = {};
+CHATON = false;
 
 io.sockets.on('connection', function(socket) {
 
     username = socket.request.session.username;
     sessionid = socket.request.sessionID;
 
-    console.log("SESSION ID    " + sessionid);
-
     USERS_ONLINE[username] = socket.id;
+
+    socket.on("toggleChat", function(onOff) {
+      io.sockets.emit("toggleChatGlobally", onOff);
+      if (onOff) {
+        CHATON = true;
+        console.log(CHATON);
+      } else {
+        CHATON = false;
+      }
+    });
+
+    socket.on("getInitialChat", function() {
+      if (CHATON) {
+        if (CHAT_LOGS.hasOwnProperty(sessionid)) {
+          socket.join(sessionid);
+          console.log(CHAT_LOGS[sessionid]);
+          socket.emit("receiveInitialChat", CHAT_LOGS[sessionid]);
+        } else {
+          socket.emit("receiveInitialChat", "none");
+        }
+      } else {
+        console.log("stopped chat");
+        socket.emit("receiveInitialChat", "chatOff");
+      }
+    });
+
+    socket.on("adminGetChats", function() {
+      for (session in CHAT_LOGS) {
+        socket.join(session);
+      }
+      socket.emit("adminGetChatStatus", CHATON);
+      socket.emit("adminReceiveChats", CHAT_LOGS);
+    });
 
     socket.on("adminJoinChat", function(data) {
       socket.join(data);
     });
 
+    socket.on("messageFromAdmin", function(data) {
+      CHAT_LOGS[chatSession].push(data);
+      io.to(data.session).emit("messageFromAdmin", data);
+    });
+
     socket.on("newChatMessage", function(messageClientContent) {
       chatSession = socket.request.sessionID;
+      timestamp = new Date().getTime();
       async.parallel([
         function(callback) {
           if ( !(USERS_CHATTING.hasOwnProperty(chatSession)) ) {
-            USERS_CHATTING[chatSession] = "active";
+            USERS_CHATTING[chatSession] = [];
+            CHAT_LOGS[chatSession] = [];
             socket.join(chatSession);
 
+            socket.emit('chatGreetingMessage', chatSession);
+
+            username = socket.request.session.username;
             if (typeof username === 'undefined') {
               chatUsername = "Customer"
             } else {
               chatUsername = username;
             }
             sendData = {
+              timestamp: timestamp,
               username: chatUsername,
               chatSession: chatSession,
-              content: messageClientContent,
+              message: messageClientContent,
+              user: 'user',
             }
+            CHAT_LOGS[chatSession].push(sendData);
             io.sockets.emit('newChat', sendData);
           } else {
             console.log("MESSAGING HERE " + chatSession);
             sendDataNew = {
+              timestamp: timestamp,
               username: chatUsername,
               chatSession: chatSession,
-              content: messageClientContent,
+              message: messageClientContent,
+              user: 'user',
             }
+            CHAT_LOGS[chatSession].push(sendDataNew);
             io.to(chatSession).emit('messageToAdmin', sendDataNew);
           }
         callback();
         }
       ]);
     })
+
+    socket.on("closeChat", function(session) {
+      for (var key in CHAT_LOGS) {
+        if (key === session) {
+          delete CHAT_LOGS[session];
+        }
+      }
+      for (var key in USERS_CHATTING) {
+        if (key === session) {
+          delete USERS_CHATTING[session];
+        }
+      }
+      io.to(session).emit("chatClosedByAdmin");
+    });
 
     socket.on('disconnect', function() {
         delete USERS_ONLINE[socket.id];

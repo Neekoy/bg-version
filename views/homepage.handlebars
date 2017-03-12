@@ -1,177 +1,243 @@
 <!-- BANNER -->
-<div class="registerHeader">
-  <img class="registerHeaderImage" src="/images/deskflower.jpg">
-  <div class="registerHeaderLayer"></div>
-  <div class="topBannerTexts" ng-style="{ 'left': mainCtrl.leftSpace + '%' }">
-    <div class="topBannerHead coolFont">Стандартен Хостинг</div>
-    <div class="topBannerDesc coolFont">От <span id="greenOne">1 лев </span>на месец</div>
-    <div class="topBannerSmall">
-      <div class="topBannerChecklist">
-        <div class="topBannerChecklistItem coolFont"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Безкраен трафик</br></div>
-        <div class="topBannerChecklistItem coolFont"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Лесен контролен панел</br></div>
-        <div class="topBannerChecklistItem coolFont"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 24/7/365 техническа поддръжка</br></div>
-      </div>
-      <div class="topBannerChecklist">
-        <div class="topBannerChecklistItem coolFont"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 99.9% Гарантиран достъп</br></div>
-        <div class="topBannerChecklistItem coolFont"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Безплатен SSL сертификат</br></div>
-        <div class="topBannerChecklistItem coolFont"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Цени от <b>1 Лев</b> на месец!</br></div>
-      </div>
-      <div>
-        <button type="button" class="btn btn-default getStarted">Поръчай</button>
-      </div>
-    </div>
+
+<div class="blackOnTopOfParallax">
+<div class="parallax-window parallax-main-page" data-parallax="scroll" data-image-src="/images/sunnyroad.jpg">
+
+{{> mainmenu}}
+
+<!-- TOP OF MAINPAGE -->
+
+
+<!-- OLD TOP
+<div class="mainPageTopNav">
+  <div class="mainPageTopNavGreen"></div>
+  <div class="mainPageTopNavTextHead">Стандартен</div>
+  <div class="mainPageTopNavTextHead">хостинг</div>
+  <div class="mainPageTopNavGreen"></div>
+  <div class="mainPageTopNavText2">Бърз и надежден персонален хостинг от 1 лев на месец </div>
+</div>
+
+-->
+
+<div class="mainPageTopDisappearMagic">
+<div class="mainPageTop coolFont">
+	<div class="mainPageTopHeader">
+		Стандартен хостинг
+	</div>
+	<div class="mainPageTopHeaderSmall">
+		от 1 лев на месец
+	</div>
+</div>
+
+<div class="mainPageTopDetailsCont">
+<div class="mainPageTopDetails coolFont">
+	<div class="mainPageTopDetail">
+		<div class="mainPageTopDetailSymbol">
+			<i class="fa fa-globe faCheck" aria-hidden="true"></i>
+		</div>
+		<div>
+			Неограничено пространство и трафик
+		</div>
+	</div>
+	<div class="mainPageTopDetail">
+		<div class="mainPageTopDetailSymbol">
+			<i class="fa fa-star faCheck" aria-hidden="true"></i>
+		</div>
+		<div>
+			99.9% гарантиран достъп до услугата
+		</div>
+	</div>
+	<div class="mainPageTopDetail">
+		<div class="mainPageTopDetailSymbol">
+			<i class="fa fa-comments faCheck" aria-hidden="true"></i>
+		</div>
+		<div>
+			24/7 поддръжка от професионалисти
+		</div>
+	</div>
+	<div class="mainPageTopDetail">
+		<div class="mainPageTopDetailSymbol">
+			<i class="fa fa-wordpress faCheck" aria-hidden="true"></i>
+		</div>
+		<div>
+			Напълно готов за всеки сайт
+		</div>
+	</div>
+	<div class="mainPageTopDetail">
+		<div class="mainPageTopDetailSymbol">
+			<i class="fa fa-database faCheck" aria-hidden="true"></i>
+		</div>
+		<div>
+			Бекъпи за един месец назад
+		</div>
+	</div>
+	<div class="mainPageTopDetail">
+		<div class="mainPageTopDetailSymbol">
+			<i class="fa fa-cog faCheck" aria-hidden="true"></i>
+		</div>
+		<div>
+			Изключително надежден хардуер
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="mainPageTopDetailsButton coolFont">
+	<div class="mainPageTopDetailsBuy">
+		Добави в количката
+	</div>
+	<div class="mainPageTopDetailsDetails">
+		Или виж повече детайли
+	</div>
+</div>
+</div> <!-- End of Magic -->
+
+
+
+<div class="mainPageHeaderFontParallax">Популярни услуги</div>
+  <div class="whiteFont">
+    <div class="greenLineParallax"></div>
+</div>
+
+</div> <!-- PARALLAX END -->
+
+</div>
+
+
+<div class="mainPageHighlightCont coolFont">
+  <div class="mainPageHighlights">
+    <div><img class="mainPageHighImg" src="images/wordpress.svg"></div>
+    <div class="mainPageHighHead">Wordpress Хостинг</div>
+    <div class="mainPageHighCont">Всичко от което се нуждаете за вашия Wordpress сайт. Бърз и надежден хостинг, за да можете да вършите това което обичате, докато ние се грижим за техническата част.</div>
+      <a href="/wordpress-hosting"><div class="mainPageHighButton">Прегледай</div></a>
+  </div>
+  <div class="mainPageHighlights">
+    <div><img class="mainPageHighImg" src="images/cloud.svg"></div>
+    <div class="mainPageHighHead coolFont">Генерален Хостинг</div>
+    <div class="mainPageHighCont">Стабилен, лесен за ползване и изключително достъпен. Постоянна техническа поддръжка за всички наши услуги, и всичко това на най-ниските цени в страната.</div>
+      <a href="/wordpress-hosting"><div class="mainPageHighButton">Прегледай</div></a>
+  </div>
+  <div class="mainPageHighlights">
+    <div><img class="mainPageHighImg" src="images/vps.svg"></div>
+    <div class="mainPageHighHead coolFont">Виртуални Сървъри</div>
+    <div class="mainPageHighCont">Индивидуални хостинг решения с изключителна производителност. Всеки аспект на поддържката им се извършва от наша страна, докато изискванията са от вас.</div>
+      <a href="/wordpress-hosting"><div class="mainPageHighButton">Прегледай</div></a>
   </div>
 </div>
 
-<div class="domainSearchContainer">
-	<div class="domainSearch">
-	</div>
-	<div class="domainSearchTrianglesCont">
-	    <div class="input-group domainSearchBar">
-	      <input type="text" class="form-control domainSearchBox" placeholder="Потърси идеалния домейн тук...">
-	      <span class="input-group-btn">
-	        <button class="btn btn-default domainSearchButton" type="button">Go!</button>
-	      </span>
-	    </div>
-	    <div class="domainSearchPrices">
-		      <span class="domainPriceSpace coolFont"><b>.com</b> 9.99лв</span>
-		      <span class="domainPriceSpace coolFont"><b>.net</b> 9.99лв</span>
-		      <span class="domainPriceSpace coolFont"><b>.org</b> 9.99лв</span>
-	    </div>
-    </div>
-</div>
 
-<div class="mainPageHeader coolFont">Популярни услуги</div>
-<div class="greenLine"></div>
-
-<div class="mainPageHighlightCont coolFont">
-	<div class="mainPageHighlights">
-		<div><img class="mainPageHighImg" src="images/wordpress.svg"></div>
-		<div class="mainPageHighHead">Wordpress Хостинг</div>
-		<div class="mainPageHighCont">Всичко от което се нуждаете за вашия Wordpress сайт. Бърз и надежден хостинг, за да можете да вършите това което обичате, докато ние се грижим за техническата част.</div>
-    	<a href="/wordpress-hosting"><div class="mainPageHighButton">Прегледай</div></a>
-	</div>
-	<div class="mainPageHighlights">
-		<div><img class="mainPageHighImg" src="images/cloud.svg"></div>
-		<div class="mainPageHighHead coolFont">Генерален Хостинг</div>
-		<div class="mainPageHighCont">Стабилен, лесен за ползване и изключително достъпен. Постоянна техническа поддръжка за всички наши услуги, и всичко това на най-ниските цени в страната.</div>
-    	<a href="/wordpress-hosting"><div class="mainPageHighButton">Прегледай</div></a>
-	</div>
-	<div class="mainPageHighlights">
-		<div><img class="mainPageHighImg" src="images/vps.svg"></div>
-		<div class="mainPageHighHead coolFont">Виртуални Сървъри</div>
-		<div class="mainPageHighCont">Индивидуални хостинг решения с изключителна производителност. Всеки аспект на поддържката им се извършва от наша страна, докато изискванията са от вас.</div>
-    	<a href="/wordpress-hosting"><div class="mainPageHighButton">Прегледай</div></a>
-	</div>
-</div>
-
+<div class="parallax-window parallax-main-page" data-parallax="scroll" data-image-src="/images/grass.jpg">
 <div class="mainPagePlans">
-	<div class="mainPagePlansHead">
-		<b>ХОСТИНГ ПАКЕТИ</b>
-	</div>
-	<div class="mainPagePlansBox">
-		<div class="mainPagePlansBoxesPairs"> 
-			<div class="mainPagePlansBoxes">
-				<div></div>
-				<div>Базов
-				</div>
-				<div class="plansPrice1">
-					<div class="plansPriceRegular">
-						<span class="plansPriceRegularAmt">5 лв/месец</span>
-					</div>
-					<div class="plansPriceDiscount">
-						<span class="plansPriceBig"><b>1 лев</b></span><span class="plansPriceSmall"> /месец</span>
-					</div>
-				</div>
-				<div class="mainPagePlansDesc">
-					<div class="mainPagePlansDescItem">1 сайт</div>
-					<div class="mainPagePlansDescItem">1 база данни</div>
-					<div class="mainPagePlansDescItem">25 имейла</div>
-					<div class="mainPagePlansDescItem">Неограничен трафик</div>
-					<div class="mainPagePlansDescItem">Безплатна миграция</div>
-					<div class="mainPagePlansDescItem">Безплатен SSL сертификат</div>
-					<div class="mainPagePlansDescItemFull">Пълно описание</div>
-				</div>
-				<div class="plansPrice1 cursorPointer" ng-click="mainCtrl.addToCart('Cloud', 'Basic', 'monthly')">КУПИ
-				</div>
-			</div>
-			<div class="mainPagePlansBoxes">
-				<div class="mainPagePlansPop">Най-популярен</div>
-				<div class="mainPagePlanNamePop">Стандартен
-				</div>
-				<div class="plansPrice2">
-					<div class="plansPriceRegular">
-						<span class="plansPriceRegularAmt">7 лв/месец</span>
-					</div>
-					<div>
-						<span class="plansPriceBig"><b>1 лев</b></span><span class="plansPriceSmall"> /месец</span>
-					</div>
-				</div>
-				<div class="mainPagePlansDesc">
-					<div class="mainPagePlansDescItem">1 сайт</div>
-					<div class="mainPagePlansDescItem">1 база данни</div>
-					<div class="mainPagePlansDescItem">25 имейла</div>
-					<div class="mainPagePlansDescItem">Неограничен трафик</div>
-					<div class="mainPagePlansDescItem">Безплатна миграция</div>
-					<div class="mainPagePlansDescItem">Безплатен SSL сертификат</div>
-					<div class="mainPagePlansDescItemFull">Пълно описание</div>
-				</div>
-				<div class="plansPrice2 cursorPointer" ng-click="mainCtrl.addToCart('Cloud', 'Standard', 'monthly')">КУПИ
-				</div>
-			</div>
-		</div>
-		<div class="mainPagePlansBoxesPairs"> 
-			<div class="mainPagePlansBoxes">
-				<div></div>
-				<div>Професионален
-				</div>
-				<div class="plansPrice3">
-					<div class="plansPriceRegular">
-						<span class="plansPriceRegularAmt">12 лв/месец</span>
-					</div>
-					<div>
-						<span class="plansPriceBig"><b>3 лева</b></span><span class="plansPriceSmall"> /месец</span>
-					</div>
-				</div>
-				<div class="mainPagePlansDesc">
-					<div class="mainPagePlansDescItem">1 сайт</div>
-					<div class="mainPagePlansDescItem">1 база данни</div>
-					<div class="mainPagePlansDescItem">25 имейла</div>
-					<div class="mainPagePlansDescItem">Неограничен трафик</div>
-					<div class="mainPagePlansDescItem">Безплатна миграция</div>
-					<div class="mainPagePlansDescItem">Безплатен SSL сертификат</div>
-					<div class="mainPagePlansDescItemFull">Пълно описание</div>
-				</div>
-				<div class="plansPrice3 cursorPointer" ng-click="mainCtrl.addToCart('Cloud', 'Pro', 'monthly')">КУПИ
-				</div>
-			</div>
-			<div class="mainPagePlansBoxes"> 
-				<div></div>
-				<div>Ултимативен
-				</div>
-				<div class="plansPrice4">
-					<div class="plansPriceRegular">
-						<span class="plansPriceRegularAmt">20 лв/месец</span>
-					</div>
-					<div>
-						<span class="plansPriceBig clear"><b>5 лева</b></span><span class="plansPriceSmall"> /месец</span>
-					</div>
-				</div>
-				<div class="mainPagePlansDesc">
-					<div class="mainPagePlansDescItem">1 сайт</div>
-					<div class="mainPagePlansDescItem">1 база данни</div>
-					<div class="mainPagePlansDescItem">25 имейла</div>
-					<div class="mainPagePlansDescItem">Неограничен трафик</div>
-					<div class="mainPagePlansDescItem">Безплатна миграция</div>
-					<div class="mainPagePlansDescItem">Безплатен SSL сертификат</div>
-					<div class="mainPagePlansDescItemFull">Пълно описание</div>
-				</div>
-				<div class="plansPrice4 cursorPointer" ng-click="mainCtrl.addToCart('Cloud', 'Ultimate', 'monthly')">КУПИ
-				</div>
-			</div>
-		</div>	
-	</div>
+  <div class="mainPagePlansHead">
+    <b>ХОСТИНГ ПАКЕТИ</b>
+  </div>
+  <div class="mainPagePlansBox">
+    <div class="mainPagePlansBoxesPairs"> 
+      <div class="mainPagePlansBoxes">
+        <div></div>
+        <div>Базов
+        </div>
+        <div class="plansPrice1">
+          <div class="plansPriceRegular">
+            <span class="plansPriceRegularAmt">5 лв/месец</span>
+          </div>
+          <div class="plansPriceDiscount">
+            <span class="plansPriceBig"><b>1 лев</b></span><span class="plansPriceSmall"> /месец</span>
+          </div>
+        </div>
+        <div class="mainPagePlansDesc">
+          <div class="mainPagePlansDescItem">1 сайт</div>
+          <div class="mainPagePlansDescItem">1 база данни</div>
+          <div class="mainPagePlansDescItem">25 имейла</div>
+          <div class="mainPagePlansDescItem">Неограничен трафик</div>
+          <div class="mainPagePlansDescItem">Безплатна миграция</div>
+          <div class="mainPagePlansDescItem">Безплатен SSL сертификат</div>
+          <div class="mainPagePlansDescItemFull">Пълно описание</div>
+        </div>
+        <div class="plansPrice1 cursorPointer" ng-click="mainCtrl.addToCart('Cloud', 'Basic', 'monthly')">КУПИ
+        </div>
+      </div>
+      <div class="mainPagePlansBoxes">
+        <div class="mainPagePlansPop">Най-популярен</div>
+        <div class="mainPagePlanNamePop">Стандартен
+        </div>
+        <div class="plansPrice2">
+          <div class="plansPriceRegular">
+            <span class="plansPriceRegularAmt">7 лв/месец</span>
+          </div>
+          <div>
+            <span class="plansPriceBig"><b>1 лев</b></span><span class="plansPriceSmall"> /месец</span>
+          </div>
+        </div>
+        <div class="mainPagePlansDesc">
+          <div class="mainPagePlansDescItem">1 сайт</div>
+          <div class="mainPagePlansDescItem">1 база данни</div>
+          <div class="mainPagePlansDescItem">25 имейла</div>
+          <div class="mainPagePlansDescItem">Неограничен трафик</div>
+          <div class="mainPagePlansDescItem">Безплатна миграция</div>
+          <div class="mainPagePlansDescItem">Безплатен SSL сертификат</div>
+          <div class="mainPagePlansDescItemFull">Пълно описание</div>
+        </div>
+        <div class="plansPrice2 cursorPointer" ng-click="mainCtrl.addToCart('Cloud', 'Standard', 'monthly')">КУПИ
+        </div>
+      </div>
+    </div>
+    <div class="mainPagePlansBoxesPairs"> 
+      <div class="mainPagePlansBoxes">
+        <div></div>
+        <div>Професионален
+        </div>
+        <div class="plansPrice3">
+          <div class="plansPriceRegular">
+            <span class="plansPriceRegularAmt">12 лв/месец</span>
+          </div>
+          <div>
+            <span class="plansPriceBig"><b>3 лева</b></span><span class="plansPriceSmall"> /месец</span>
+          </div>
+        </div>
+        <div class="mainPagePlansDesc">
+          <div class="mainPagePlansDescItem">1 сайт</div>
+          <div class="mainPagePlansDescItem">1 база данни</div>
+          <div class="mainPagePlansDescItem">25 имейла</div>
+          <div class="mainPagePlansDescItem">Неограничен трафик</div>
+          <div class="mainPagePlansDescItem">Безплатна миграция</div>
+          <div class="mainPagePlansDescItem">Безплатен SSL сертификат</div>
+          <div class="mainPagePlansDescItemFull">Пълно описание</div>
+        </div>
+        <div class="plansPrice3 cursorPointer" ng-click="mainCtrl.addToCart('Cloud', 'Pro', 'monthly')">КУПИ
+        </div>
+      </div>
+      <div class="mainPagePlansBoxes"> 
+        <div></div>
+        <div>Ултимативен
+        </div>
+        <div class="plansPrice4">
+          <div class="plansPriceRegular">
+            <span class="plansPriceRegularAmt">20 лв/месец</span>
+          </div>
+          <div>
+            <span class="plansPriceBig clear"><b>5 лева</b></span><span class="plansPriceSmall"> /месец</span>
+          </div>
+        </div>
+        <div class="mainPagePlansDesc">
+          <div class="mainPagePlansDescItem">1 сайт</div>
+          <div class="mainPagePlansDescItem">1 база данни</div>
+          <div class="mainPagePlansDescItem">25 имейла</div>
+          <div class="mainPagePlansDescItem">Неограничен трафик</div>
+          <div class="mainPagePlansDescItem">Безплатна миграция</div>
+          <div class="mainPagePlansDescItem">Безплатен SSL сертификат</div>
+          <div class="mainPagePlansDescItemFull">Пълно описание</div>
+        </div>
+        <div class="plansPrice4 cursorPointer" ng-click="mainCtrl.addToCart('Cloud', 'Ultimate', 'monthly')">КУПИ
+        </div>
+      </div>
+    </div>  
+  </div>
 </div>
+</div>
+
+
+<!-- TOP OF MAINPAGE END -->
 
 <div class="mainPageAboutContHead">Защо да изберете <span class="colorBlue">ESR HOST?</span></div>
 <div class="mainPageAboutGreen"></div>
@@ -184,7 +250,7 @@
 	<div class="mainPageAboutImgContSmall" ng-show="mainCtrl.aboutSmallScreen" ng-hide="mainCtrl.aboutBigScreen">
 		<img class="mainPageAboutImgSmall" src="images/banner_people1.png" ng-style="{ 'width': mainCtrl.aboutImgWidth + '%', 'min-width': mainCtrl.aboutImgMinWidth + 'px', 'display': aboutImgDisplay }">
 	</div>
-	<div class="mainPageAboutContent" ng-style=" { 'width': mainCtrl.aboutTextSize + '%' }">	
+	<div class="mainPageAboutContent" ng-style=" { 'width': mainCtrl.aboutTextSize + '%' }">
 		<div class="mainPageDesc">
 		  <div class="mainPageDescHead lightGreyFont"><b>Отбор от звезди</b></div>
 		  <div class="mainPageDescBody lightGreyFont">Ние сме малък тим от изключително опитни системни администратори и програмисти, които са винаги на ваше разположение. В друга компания ще са ви нужни 3-4 ескалации за да стигнете до нас. Тук, ние сме първите които ще ви обслужат.</div>
